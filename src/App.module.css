@@ -47,7 +47,17 @@
   border: none;
 }
 
-.button:disabled {
+.buttonOrange {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(98.66deg, #E65C00 0%, #F9D423 67.46%);
+    border: none;
+
+}
+
+.button:disabled, buttonOrange:disabled {
     opacity: 0.4;
 }
 

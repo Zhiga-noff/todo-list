@@ -1,11 +1,11 @@
 import style from './App.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FormFieldTask } from './modules/Form-field-task';
 import { ButtonCreate } from './modules/ButtonCreate';
 import { TaskName } from './modules/TaskName';
 
 // const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos/';
-export const TODOS_URL = 'http://localhost:3005/todos\n';
+export const TODOS_URL = 'http://localhost:3005/todos';
 
 async function createNewTask(setTasks, setIsLoading) {
   try {
@@ -23,6 +23,11 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [refreshFlag, setRefreshFlag] = useState(false);
   const [buttonFlagRefresh, setButtonFlagRefresh] = useState(false);
+  const [taskId, setTaskId] = useState('');
+  const [isEditTask, setIsEditTask] = useState(false);
+  const [value, setValue] = useState('');
+
+  const inputRef = useRef(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,7 +41,14 @@ export const App = () => {
         refreshFlag={refreshFlag}
         setRefreshFlag={setRefreshFlag}
         buttonFlagRefresh={buttonFlagRefresh}
+        isEditTask={isEditTask}
+        setIsEditTask={setIsEditTask}
+        value={value}
+        setValue={setValue}
         setButtonFlagRefresh={setButtonFlagRefresh}
+        taskId={taskId}
+        setTaskId={setTaskId}
+        inputRef={inputRef}
       />
       <ul className={style.taskList}>
         {isLoading ? (
@@ -46,6 +58,10 @@ export const App = () => {
             tasks={tasks}
             refreshFlag={refreshFlag}
             setRefreshFlag={setRefreshFlag}
+            setIsEditTask={setIsEditTask}
+            setValue={setValue}
+            setTaskId={setTaskId}
+            inputRef={inputRef}
           />
         )}
       </ul>

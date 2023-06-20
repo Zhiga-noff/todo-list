@@ -1,15 +1,5 @@
 import { TODOS_URL } from '../../App';
 
-const validateTask = /^[\w_]*$/;
-
-export const validateTaskField = (value) => {
-  if (!validateTask.test(value) || value === '') {
-    console.error('ошибка');
-    return false;
-  }
-  return true;
-};
-
 export const requestAddTask = async (value, refreshFlag, setRefreshFlag) => {
   try {
     const response = await fetch(TODOS_URL, {
@@ -24,4 +14,16 @@ export const requestAddTask = async (value, refreshFlag, setRefreshFlag) => {
   } catch (error) {
     console.error(error);
   }
+};
+
+export const requestUpdateTask = async (value, refreshFlag, setRefreshFlag, taskId) => {
+  const response = await fetch(`${TODOS_URL}/${taskId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json;charset=utf-8' },
+    body: JSON.stringify({
+      title: value,
+    }),
+  });
+  const result = await response.json();
+  setRefreshFlag(!refreshFlag);
 };
