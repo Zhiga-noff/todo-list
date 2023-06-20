@@ -47,6 +47,10 @@
   border: none;
 }
 
+.button:disabled {
+    opacity: 0.4;
+}
+
 .taskList {
   padding: 3rem 3rem;
 }

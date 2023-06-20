@@ -4,7 +4,8 @@ import { FormFieldTask } from './modules/Form-field-task';
 import { ButtonCreate } from './modules/ButtonCreate';
 import { TaskName } from './modules/TaskName';
 
-const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos/';
+// const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos/';
+export const TODOS_URL = 'http://localhost:3005/todos\n';
 
 async function createNewTask(setTasks, setIsLoading) {
   try {
@@ -20,15 +21,23 @@ async function createNewTask(setTasks, setIsLoading) {
 export const App = () => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [refreshFlag, setRefreshFlag] = useState(false);
+  const [buttonFlagRefresh, setButtonFlagRefresh] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     createNewTask(setTasks, setIsLoading);
-  }, []);
+    setButtonFlagRefresh(false);
+  }, [refreshFlag]);
 
   return (
     <div className={style.app}>
-      <FormFieldTask />
+      <FormFieldTask
+        refreshFlag={refreshFlag}
+        setRefreshFlag={setRefreshFlag}
+        buttonFlagRefresh={buttonFlagRefresh}
+        setButtonFlagRefresh={setButtonFlagRefresh}
+      />
       <ul className={style.taskList}>
         {isLoading ? <div className={style.loader}></div> : <TaskName tasks={tasks} />}
       </ul>
