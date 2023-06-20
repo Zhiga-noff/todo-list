@@ -39,7 +39,15 @@ export const App = () => {
         setButtonFlagRefresh={setButtonFlagRefresh}
       />
       <ul className={style.taskList}>
-        {isLoading ? <div className={style.loader}></div> : <TaskName tasks={tasks} />}
+        {isLoading ? (
+          <div className={style.loader}></div>
+        ) : (
+          <TaskName
+            tasks={tasks}
+            refreshFlag={refreshFlag}
+            setRefreshFlag={setRefreshFlag}
+          />
+        )}
       </ul>
     </div>
   );
