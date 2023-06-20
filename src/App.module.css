@@ -18,6 +18,17 @@
 
 .flexField {
   display: flex;
+    justify-content: stretch;
+}
+
+.flexForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexForm a {
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .field {
@@ -32,7 +43,7 @@
   font-size: 1rem;
   font-weight: 700;
   color: white;
-  background: linear-gradient(98.66deg, #45e99a 0.01%, #839735 100%);
+    background: linear-gradient(98.66deg, #1CD8D2 0%, #93EDC7 100%);
   border: none;
 }
 
@@ -46,6 +57,21 @@
   border-bottom: 1px solid #ededed;
   margin-bottom: 1rem;
   font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+
+}
+
+.icons a {
+    width: 38px;
+    height: 38px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .loader {
