@@ -10,6 +10,11 @@ export const TaskName = ({
   setValue,
   setTaskId,
   inputRef,
+  value,
+  clickFilter,
+  setClickFilter,
+  isSearchTask,
+  setIsSearchTask,
 }) => {
   return tasks.map(({ id, title }) => (
     <li className={style.task} key={id}>
@@ -17,15 +22,20 @@ export const TaskName = ({
       <div className={style.icons}>
         <ButtonCreate
           flag={false}
+          itemId={id}
           tasks={tasks}
           setTasks={setTasks}
-          itemId={id}
           refreshFlag={refreshFlag}
           setRefreshFlag={setRefreshFlag}
           setIsEditTask={setIsEditTask}
+          value={value}
           setValue={setValue}
           setTaskId={setTaskId}
           inputRef={inputRef}
+          clickFilter={clickFilter}
+          setClickFilter={setClickFilter}
+          isSearchTask={isSearchTask}
+          setIsSearchTask={setIsSearchTask}
         />
       </div>
     </li>

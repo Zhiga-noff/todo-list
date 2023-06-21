@@ -1,7 +1,7 @@
-import { deleteTask } from './delete-task';
-import { editTask } from './edit-task';
-import { filterTask } from './filter-task';
-import { searchTask } from './search-task';
+import { deleteTask } from '../modules/delete-task';
+import { editTask } from '../modules/edit-task';
+import { filterTask } from '../modules/filter-task';
+import { searchTask } from '../modules/search-task';
 
 export const eventOnClick = (
   tasks,
@@ -9,6 +9,7 @@ export const eventOnClick = (
   eventClick,
   itemId,
   setIsEditTask,
+  value,
   setValue,
   setTaskId,
   inputRef,
@@ -16,6 +17,8 @@ export const eventOnClick = (
   setRefreshFlag,
   clickFilter,
   setClickFilter,
+  isSearchTask,
+  setIsSearchTask,
 ) => {
   switch (eventClick) {
     case 'DELETE':
@@ -23,15 +26,7 @@ export const eventOnClick = (
       deleteTask(refreshFlag, setRefreshFlag, itemId);
       break;
     case 'PUT':
-      editTask(
-        refreshFlag,
-        setRefreshFlag,
-        itemId,
-        setIsEditTask,
-        setValue,
-        setTaskId,
-        inputRef,
-      );
+      editTask(refreshFlag, setRefreshFlag, itemId, setIsEditTask, setValue, setTaskId, inputRef);
       break;
     case 'filter':
       if (clickFilter) {
@@ -44,6 +39,14 @@ export const eventOnClick = (
       }
       break;
     case 'search':
-      searchTask();
+      if (isSearchTask) {
+        setRefreshFlag(!refreshFlag);
+        setValue('');
+        setIsSearchTask(false);
+      } else {
+        setIsSearchTask(true);
+        setRefreshFlag(!refreshFlag);
+      }
+      break;
   }
 };

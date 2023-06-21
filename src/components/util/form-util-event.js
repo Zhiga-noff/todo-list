@@ -27,3 +27,16 @@ export const requestUpdateTask = async (value, refreshFlag, setRefreshFlag, task
   const result = await response.json();
   setRefreshFlag(!refreshFlag);
 };
+
+export const searchTaskRequest = (tasks, value, setTasks) => {
+  let foundTask = [];
+  tasks.forEach((item) => {
+    if (item.title.includes(value)) {
+      foundTask = [item];
+      setTasks(foundTask);
+      return;
+    }
+  });
+  console.log(foundTask);
+  console.log('ты мне веришь?'.includes('ты мне'));
+};

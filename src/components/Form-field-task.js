@@ -1,6 +1,6 @@
 import style from '../App.module.css';
 import { ButtonCreate } from './ButtonCreate';
-import { requestAddTask, requestUpdateTask } from './util/form-util-event';
+import { requestAddTask, requestUpdateTask, searchTaskRequest } from './util/form-util-event';
 
 export const FormFieldTask = ({
   tasks,
@@ -18,6 +18,8 @@ export const FormFieldTask = ({
   inputRef,
   clickFilter,
   setClickFilter,
+  isSearchTask,
+  setIsSearchTask,
 }) => {
   const onChangeTaskField = ({ target }) => {
     setValue(target.value);
@@ -34,6 +36,9 @@ export const FormFieldTask = ({
       setTaskId('');
       setIsEditTask(false);
       setButtonFlagRefresh(true);
+      setValue('');
+    } else if (isSearchTask) {
+      searchTaskRequest(tasks, value, setTasks);
       setValue('');
     } else {
       requestAddTask(value, refreshFlag, setRefreshFlag);
@@ -60,6 +65,20 @@ export const FormFieldTask = ({
             <button disabled={buttonFlagRefresh} className={style.buttonOrange}>
               Внести изменения
             </button>
+          ) : isSearchTask ? (
+            <>
+              <button className={style.buttonGrey}>Поиск</button>
+              <button
+                type={'button'}
+                onClick={() => {
+                  setRefreshFlag(!refreshFlag);
+                  setIsSearchTask(false);
+                }}
+                className={style.buttonRed}
+              >
+                Сбросить
+              </button>
+            </>
           ) : (
             <button disabled={buttonFlagRefresh} className={style.button}>
               Добавить задачу
@@ -74,11 +93,14 @@ export const FormFieldTask = ({
             refreshFlag={refreshFlag}
             setRefreshFlag={setRefreshFlag}
             setIsEditTask={setIsEditTask}
+            value={value}
             setValue={setValue}
             setTaskId={setTaskId}
             inputRef={inputRef}
             clickFilter={clickFilter}
             setClickFilter={setClickFilter}
+            isSearchTask={isSearchTask}
+            setIsSearchTask={setIsSearchTask}
           />
         </div>
       </div>

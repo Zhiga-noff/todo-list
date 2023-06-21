@@ -1,6 +1,4 @@
 import { buttonsIcon } from '../data/buttons-icon';
-import { deleteTask } from './util/delete-task';
-import { editTask } from './util/edit-task';
 import { eventOnClick } from './util/eventOnClick';
 
 export const ButtonCreate = ({
@@ -9,6 +7,7 @@ export const ButtonCreate = ({
   flag,
   itemId,
   setIsEditTask,
+  value,
   setValue,
   setTaskId,
   inputRef,
@@ -16,6 +15,8 @@ export const ButtonCreate = ({
   setRefreshFlag,
   clickFilter,
   setClickFilter,
+  isSearchTask,
+  setIsSearchTask,
 }) => {
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (flag && (name === 'filter' || name === 'search')) {
@@ -29,6 +30,7 @@ export const ButtonCreate = ({
               eventClick,
               itemId,
               setIsEditTask,
+              value,
               setValue,
               setTaskId,
               inputRef,
@@ -36,6 +38,8 @@ export const ButtonCreate = ({
               setRefreshFlag,
               clickFilter,
               setClickFilter,
+              isSearchTask,
+              setIsSearchTask,
             )
           }
         >
@@ -46,20 +50,7 @@ export const ButtonCreate = ({
       return (
         <a
           key={name}
-          onClick={() =>
-            eventOnClick(
-              tasks,
-              setTasks,
-              eventClick,
-              itemId,
-              setIsEditTask,
-              setValue,
-              setTaskId,
-              inputRef,
-              refreshFlag,
-              setRefreshFlag,
-            )
-          }
+          onClick={() => eventOnClick(tasks, setTasks, eventClick, itemId, setIsEditTask, setValue, setTaskId, inputRef, refreshFlag, setRefreshFlag)}
         >
           <img src={url} alt="" />
         </a>

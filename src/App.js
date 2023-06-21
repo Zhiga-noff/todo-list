@@ -1,21 +1,11 @@
 import style from './App.module.css';
 import { useEffect, useRef, useState } from 'react';
-import { FormFieldTask } from './modules/Form-field-task';
-import { TaskName } from './modules/TaskName';
+import { FormFieldTask } from './components/Form-field-task';
+import { TaskName } from './components/TaskName';
+import { createNewTask } from './components/modules/create-tasks';
 
 // const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos/';
 export const TODOS_URL = 'http://localhost:3005/todos';
-
-async function createNewTask(setTasks, setIsLoading) {
-  try {
-    const response = await fetch(TODOS_URL);
-    const result = await response.json();
-    setTasks(result);
-    setIsLoading(false);
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 export const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -26,6 +16,7 @@ export const App = () => {
   const [isEditTask, setIsEditTask] = useState(false);
   const [value, setValue] = useState('');
   const [clickFilter, setClickFilter] = useState(false);
+  const [isSearchTask, setIsSearchTask] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -57,6 +48,8 @@ export const App = () => {
         inputRef={inputRef}
         clickFilter={clickFilter}
         setClickFilter={setClickFilter}
+        isSearchTask={isSearchTask}
+        setIsSearchTask={setIsSearchTask}
       />
       <ul className={style.taskList}>
         {isLoading ? (
