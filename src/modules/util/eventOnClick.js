@@ -1,6 +1,7 @@
 import { deleteTask } from './delete-task';
 import { editTask } from './edit-task';
 import { filterTask } from './filter-task';
+import { searchTask } from './search-task';
 
 export const eventOnClick = (
   tasks,
@@ -41,7 +42,8 @@ export const eventOnClick = (
         setTasks(filterTask(tasks));
         setRefreshFlag(!refreshFlag);
       }
-
       break;
+    case 'search':
+      searchTask();
   }
 };
