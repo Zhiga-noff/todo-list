@@ -1,9 +1,10 @@
 import style from '../App.module.css';
 import { ButtonCreate } from './ButtonCreate';
-import { useRef } from 'react';
 import { requestAddTask, requestUpdateTask } from './util/form-util-event';
 
 export const FormFieldTask = ({
+  tasks,
+  setTasks,
   refreshFlag,
   setRefreshFlag,
   isEditTask,
@@ -15,6 +16,8 @@ export const FormFieldTask = ({
   taskId,
   setTaskId,
   inputRef,
+  clickFilter,
+  setClickFilter,
 }) => {
   const onChangeTaskField = ({ target }) => {
     setValue(target.value);
@@ -64,7 +67,19 @@ export const FormFieldTask = ({
           )}
         </div>
         <div className={style.flexField}>
-          <ButtonCreate flag={true} />
+          <ButtonCreate
+            flag={true}
+            tasks={tasks}
+            setTasks={setTasks}
+            refreshFlag={refreshFlag}
+            setRefreshFlag={setRefreshFlag}
+            setIsEditTask={setIsEditTask}
+            setValue={setValue}
+            setTaskId={setTaskId}
+            inputRef={inputRef}
+            clickFilter={clickFilter}
+            setClickFilter={setClickFilter}
+          />
         </div>
       </div>
     </form>

@@ -1,7 +1,6 @@
 import style from './App.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { FormFieldTask } from './modules/Form-field-task';
-import { ButtonCreate } from './modules/ButtonCreate';
 import { TaskName } from './modules/TaskName';
 
 // const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos/';
@@ -26,18 +25,25 @@ export const App = () => {
   const [taskId, setTaskId] = useState('');
   const [isEditTask, setIsEditTask] = useState(false);
   const [value, setValue] = useState('');
+  const [clickFilter, setClickFilter] = useState(false);
 
   const inputRef = useRef(null);
 
   useEffect(() => {
     setIsLoading(true);
-    createNewTask(setTasks, setIsLoading);
+    if (!clickFilter) {
+      createNewTask(setTasks, setIsLoading);
+    } else {
+      setIsLoading(false);
+    }
     setButtonFlagRefresh(false);
   }, [refreshFlag]);
 
   return (
     <div className={style.app}>
       <FormFieldTask
+        tasks={tasks}
+        setTasks={setTasks}
         refreshFlag={refreshFlag}
         setRefreshFlag={setRefreshFlag}
         buttonFlagRefresh={buttonFlagRefresh}
@@ -49,6 +55,8 @@ export const App = () => {
         taskId={taskId}
         setTaskId={setTaskId}
         inputRef={inputRef}
+        clickFilter={clickFilter}
+        setClickFilter={setClickFilter}
       />
       <ul className={style.taskList}>
         {isLoading ? (
@@ -56,6 +64,7 @@ export const App = () => {
         ) : (
           <TaskName
             tasks={tasks}
+            setTasks={setTasks}
             refreshFlag={refreshFlag}
             setRefreshFlag={setRefreshFlag}
             setIsEditTask={setIsEditTask}

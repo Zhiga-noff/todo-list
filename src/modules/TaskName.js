@@ -1,11 +1,9 @@
 import style from '../App.module.css';
 import { ButtonCreate } from './ButtonCreate';
-import { deleteTask } from './util/delete-task';
-import { editTask } from './util/edit-task';
-import { useState } from 'react';
 
 export const TaskName = ({
   tasks,
+  setTasks,
   refreshFlag,
   setRefreshFlag,
   setIsEditTask,
@@ -13,30 +11,22 @@ export const TaskName = ({
   setTaskId,
   inputRef,
 }) => {
-  const eventOnClick = (eventClick, itemId) => {
-    switch (eventClick) {
-      case 'DELETE':
-        deleteTask(refreshFlag, setRefreshFlag, itemId);
-        break;
-      case 'PUT':
-        editTask(
-          refreshFlag,
-          setRefreshFlag,
-          itemId,
-          setIsEditTask,
-          setValue,
-          setTaskId,
-          inputRef,
-        );
-        break;
-    }
-  };
-
   return tasks.map(({ id, title }) => (
     <li className={style.task} key={id}>
       <p>{title}</p>
       <div className={style.icons}>
-        <ButtonCreate flag={false} eventOnClick={eventOnClick} itemId={id} />
+        <ButtonCreate
+          flag={false}
+          tasks={tasks}
+          setTasks={setTasks}
+          itemId={id}
+          refreshFlag={refreshFlag}
+          setRefreshFlag={setRefreshFlag}
+          setIsEditTask={setIsEditTask}
+          setValue={setValue}
+          setTaskId={setTaskId}
+          inputRef={inputRef}
+        />
       </div>
     </li>
   ));
