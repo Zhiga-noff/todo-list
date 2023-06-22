@@ -1,31 +1,20 @@
 import { TODOS_URL } from '../../App';
+import { ref, push, set } from 'firebase/database';
+import { db } from '../../firebase';
 
-export const requestAddTask = async (value, refreshFlag, setRefreshFlag) => {
-  try {
-    const response = await fetch(TODOS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json;charset=utf-8' },
-      body: JSON.stringify({
-        title: value,
-      }),
-    });
-    const result = await response.json();
-    setRefreshFlag(!refreshFlag);
-  } catch (error) {
-    console.error(error);
-  }
+export const requestAddTask = async (value) => {
+  const tasksAddDbRef = ref(db, 'todos');
+  push(tasksAddDbRef, {
+    title: value,
+  });
 };
 
 export const requestUpdateTask = async (value, refreshFlag, setRefreshFlag, taskId) => {
-  const response = await fetch(`${TODOS_URL}/${taskId}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json;charset=utf-8' },
-    body: JSON.stringify({
-      title: value,
-    }),
+  const tasksUpdateDbRef = ref(db, `todos/${taskId}`);
+
+  set(tasksUpdateDbRef, {
+    title: value,
   });
-  const result = await response.json();
-  setRefreshFlag(!refreshFlag);
 };
 
 export const searchTaskRequest = (tasks, value, setTasks) => {

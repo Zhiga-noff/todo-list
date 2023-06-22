@@ -35,14 +35,12 @@ export const FormFieldTask = ({
       requestUpdateTask(value, refreshFlag, setRefreshFlag, taskId);
       setTaskId('');
       setIsEditTask(false);
-      setButtonFlagRefresh(true);
       setValue('');
     } else if (isSearchTask) {
       searchTaskRequest(tasks, value, setTasks);
       setValue('');
     } else {
-      requestAddTask(value, refreshFlag, setRefreshFlag);
-      setButtonFlagRefresh(true);
+      requestAddTask(value);
       setValue('');
     }
   };

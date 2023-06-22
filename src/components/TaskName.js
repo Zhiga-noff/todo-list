@@ -3,19 +3,19 @@ import { ButtonCreate } from './ButtonCreate';
 import { deleteTask } from './modules/delete-task';
 import { editTask } from './modules/edit-task';
 
-export const TaskName = ({ tasks, refreshFlag, setRefreshFlag, setIsEditTask, setValue, setTaskId, inputRef }) => {
+export const TaskName = ({ tasks, setIsEditTask, setValue, setTaskId, inputRef }) => {
   const eventOnClick = (eventClick, itemId) => {
     switch (eventClick) {
       case 'DELETE':
-        deleteTask(refreshFlag, setRefreshFlag, itemId);
+        deleteTask(itemId);
         break;
       case 'PUT':
-        editTask(refreshFlag, setRefreshFlag, itemId, setIsEditTask, setValue, setTaskId, inputRef);
+        editTask(tasks, itemId, setIsEditTask, setValue, setTaskId, inputRef);
         break;
     }
   };
 
-  return tasks.map(({ id, title }) => (
+  return Object.entries(tasks).map(([id, { title }]) => (
     <li className={style.task} key={id}>
       <p>{title}</p>
       <div className={style.icons}>

@@ -2,7 +2,9 @@ import style from './App.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { FormFieldTask } from './components/Form-field-task';
 import { TaskName } from './components/TaskName';
-import { createNewTask } from './components/modules/create-tasks';
+// import { createNewTask } from './components/modules/create-tasks';
+import { ref, onValue } from 'firebase/database';
+import { db } from './firebase';
 
 // const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos/';
 export const TODOS_URL = 'http://localhost:3005/todos';
@@ -23,12 +25,19 @@ export const App = () => {
   useEffect(() => {
     setIsLoading(true);
     if (!clickFilter) {
-      createNewTask(setTasks, setIsLoading);
-    } else {
-      setIsLoading(false);
+      const tasksDbRef = ref(db, 'todos');
+
+      return onValue(tasksDbRef, (snapshot) => {
+        const loadedProducts = snapshot.val();
+
+        setTasks(loadedProducts || {});
+        setIsLoading(false);
+        setButtonFlagRefresh(false);
+      });
     }
+    setIsLoading(false);
     setButtonFlagRefresh(false);
-  }, [refreshFlag]);
+  }, []);
 
   return (
     <div className={style.app}>
@@ -55,16 +64,7 @@ export const App = () => {
         {isLoading ? (
           <div className={style.loader}></div>
         ) : (
-          <TaskName
-            tasks={tasks}
-            setTasks={setTasks}
-            refreshFlag={refreshFlag}
-            setRefreshFlag={setRefreshFlag}
-            setIsEditTask={setIsEditTask}
-            setValue={setValue}
-            setTaskId={setTaskId}
-            inputRef={inputRef}
-          />
+          <TaskName tasks={tasks} setIsEditTask={setIsEditTask} setValue={setValue} setTaskId={setTaskId} inputRef={inputRef} />
         )}
       </ul>
     </div>
