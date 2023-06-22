@@ -1,5 +1,5 @@
 import { buttonsIcon } from '../data/buttons-icon';
-import { eventOnClick } from './util/eventOnClick';
+import { eventOnClickInForm } from './util/eventOnClickInForm';
 
 export const ButtonCreate = ({
   tasks,
@@ -24,7 +24,7 @@ export const ButtonCreate = ({
         <a
           key={name}
           onClick={() =>
-            eventOnClick(
+            eventOnClickInForm(
               tasks,
               setTasks,
               eventClick,
@@ -50,7 +50,9 @@ export const ButtonCreate = ({
       return (
         <a
           key={name}
-          onClick={() => eventOnClick(tasks, setTasks, eventClick, itemId, setIsEditTask, setValue, setTaskId, inputRef, refreshFlag, setRefreshFlag)}
+          onClick={() =>
+            eventOnClickInForm(tasks, setTasks, eventClick, itemId, setIsEditTask, setValue, setTaskId, inputRef, refreshFlag, setRefreshFlag)
+          }
         >
           <img src={url} alt="" />
         </a>
