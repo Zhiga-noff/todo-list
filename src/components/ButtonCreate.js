@@ -17,6 +17,7 @@ export const ButtonCreate = ({
   setClickFilter,
   isSearchTask,
   setIsSearchTask,
+  eventOnClick,
 }) => {
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (flag && (name === 'filter' || name === 'search')) {
@@ -48,12 +49,7 @@ export const ButtonCreate = ({
       );
     } else if (!flag && name !== 'filter' && name !== 'search') {
       return (
-        <a
-          key={name}
-          onClick={() =>
-            eventOnClickInForm(tasks, setTasks, eventClick, itemId, setIsEditTask, setValue, setTaskId, inputRef, refreshFlag, setRefreshFlag)
-          }
-        >
+        <a key={name} onClick={() => eventOnClick(eventClick, itemId)}>
           <img src={url} alt="" />
         </a>
       );
