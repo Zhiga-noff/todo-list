@@ -1,7 +1,4 @@
-import { deleteTask } from '../modules/delete-task';
-import { editTask } from '../modules/edit-task';
 import { filterTask } from '../modules/filter-task';
-import { searchTask } from '../modules/search-task';
 
 export const eventOnClickInForm = (
   tasks,
@@ -21,21 +18,14 @@ export const eventOnClickInForm = (
   setIsSearchTask,
 ) => {
   switch (eventClick) {
-    // case 'DELETE':
-    //   setTasks([0]);
-    //   deleteTask(refreshFlag, setRefreshFlag, itemId);
-    //   break;
-    // case 'PUT':
-    //   editTask(refreshFlag, setRefreshFlag, itemId, setIsEditTask, setValue, setTaskId, inputRef);
-    //   break;
     case 'filter':
       if (clickFilter) {
-        setRefreshFlag(!refreshFlag);
         setClickFilter(false);
+        setRefreshFlag(!refreshFlag);
       } else {
         setClickFilter(true);
-        setTasks(filterTask(tasks));
-        setRefreshFlag(!refreshFlag);
+        filterTask(tasks, setTasks);
+        console.log(tasks);
       }
       break;
     case 'search':

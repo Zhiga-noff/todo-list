@@ -19,13 +19,13 @@ export const requestUpdateTask = async (value, refreshFlag, setRefreshFlag, task
 
 export const searchTaskRequest = (tasks, value, setTasks) => {
   let foundTask = [];
-  tasks.forEach((item) => {
-    if (item.title.includes(value)) {
-      foundTask = [item];
+  Object.entries(tasks).forEach((item) => {
+    console.log(item);
+    if (item[1].title.includes(value)) {
+      foundTask.push(item);
       setTasks(foundTask);
-      return;
     }
   });
   console.log(foundTask);
-  console.log('ты мне веришь?'.includes('ты мне'));
+  // console.log('ты мне веришь?'.includes('ты мне'));
 };

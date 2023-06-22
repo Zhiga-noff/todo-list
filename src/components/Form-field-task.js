@@ -10,7 +10,6 @@ export const FormFieldTask = ({
   isEditTask,
   setIsEditTask,
   buttonFlagRefresh,
-  setButtonFlagRefresh,
   value,
   setValue,
   taskId,
@@ -37,6 +36,7 @@ export const FormFieldTask = ({
       setIsEditTask(false);
       setValue('');
     } else if (isSearchTask) {
+      setClickFilter(true);
       searchTaskRequest(tasks, value, setTasks);
       setValue('');
     } else {
@@ -71,6 +71,7 @@ export const FormFieldTask = ({
                 onClick={() => {
                   setRefreshFlag(!refreshFlag);
                   setIsSearchTask(false);
+                  setClickFilter(false);
                 }}
                 className={style.buttonRed}
               >

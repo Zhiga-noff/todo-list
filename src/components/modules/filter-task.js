@@ -1,14 +1,15 @@
-export const filterTask = (tasks) => {
-  const sortTasks = tasks.sort(({ title: titleOne }, { title: titleTwo }) => {
-    if (titleOne > titleTwo) {
+export const filterTask = (tasks, setTasks) => {
+  const sortTasks = Object.entries(tasks).sort((titleOne, titleTwo) => {
+    if (titleOne[1].title > titleTwo[1].title) {
       return 1;
     }
-    if (titleOne < titleTwo) {
+    if (titleOne[1].title < titleTwo[1].title) {
       return -1;
     }
-    if (titleTwo === titleTwo) {
+    if (titleTwo[1].title === titleTwo[1].title) {
       return 0;
     }
   });
-  return sortTasks;
+
+  setTasks(sortTasks);
 };

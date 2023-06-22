@@ -37,7 +37,7 @@ export const App = () => {
     }
     setIsLoading(false);
     setButtonFlagRefresh(false);
-  }, []);
+  }, [refreshFlag]);
 
   return (
     <div className={style.app}>
@@ -64,7 +64,14 @@ export const App = () => {
         {isLoading ? (
           <div className={style.loader}></div>
         ) : (
-          <TaskName tasks={tasks} setIsEditTask={setIsEditTask} setValue={setValue} setTaskId={setTaskId} inputRef={inputRef} />
+          <TaskName
+            tasks={tasks}
+            setIsEditTask={setIsEditTask}
+            setValue={setValue}
+            setTaskId={setTaskId}
+            inputRef={inputRef}
+            clickFilter={clickFilter}
+          />
         )}
       </ul>
     </div>
