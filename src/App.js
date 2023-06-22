@@ -7,6 +7,11 @@ export const TODOS_URL = 'http://localhost:3005/todos\n';
 
 export const App = () => {
   const [refreshFlag, setRefreshFlag] = useState(false);
+  const [infoAboutTask, setInfoAboutTask] = useState({
+    id: '',
+    title: '',
+    flagForButton: 'add',
+  });
 
   const refreshAllRequests = () => {
     setRefreshFlag(!refreshFlag);
@@ -14,9 +19,17 @@ export const App = () => {
 
   return (
     <div className={style.app}>
-      <FormFieldTask refreshAllRequests={refreshAllRequests} />
+      <FormFieldTask
+        refreshAllRequests={refreshAllRequests}
+        infoAboutTask={infoAboutTask}
+        setInfoAboutTask={setInfoAboutTask}
+      />
       <ul className={style.taskList}>
-        <TaskName refreshFlag={refreshFlag} refreshAllRequests={refreshAllRequests} />
+        <TaskName
+          refreshFlag={refreshFlag}
+          refreshAllRequests={refreshAllRequests}
+          setInfoAboutTask={setInfoAboutTask}
+        />
       </ul>
     </div>
   );

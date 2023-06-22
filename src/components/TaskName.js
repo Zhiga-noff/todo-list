@@ -3,7 +3,7 @@ import { ButtonCreate } from './ButtonCreate';
 import { useEffect, useState } from 'react';
 import { createNewTask } from './modules/create-new-task';
 
-export const TaskName = ({ refreshFlag, refreshAllRequests }) => {
+export const TaskName = ({ refreshFlag, refreshAllRequests, setInfoAboutTask }) => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,6 +23,7 @@ export const TaskName = ({ refreshFlag, refreshAllRequests }) => {
             flag={false}
             itemId={id}
             refreshAllRequests={refreshAllRequests}
+            setInfoAboutTask={setInfoAboutTask}
           />
         </div>
       </li>

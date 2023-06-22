@@ -15,3 +15,16 @@ export const requestAddTask = async (value, refreshAllRequests) => {
     console.error(error);
   }
 };
+
+export const requestEditTask = async (value, refreshAllRequests, infoAboutTask) => {
+  const { id: taskId } = infoAboutTask;
+  console.log(taskId);
+  const response = await fetch(`${TODOS_URL}/${taskId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json;charset=utf-8' },
+    body: JSON.stringify({
+      title: value,
+    }),
+  });
+  refreshAllRequests();
+};

@@ -1,7 +1,7 @@
 import { buttonsIcon } from '../data/buttons-icon';
 import { eventOnClick } from './util/eventOnClick';
 
-export const ButtonCreate = ({ flag, itemId, refreshAllRequests }) => {
+export const ButtonCreate = ({ flag, itemId, refreshAllRequests, setInfoAboutTask }) => {
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (flag && (name === 'filter' || name === 'search')) {
       return (
@@ -14,7 +14,7 @@ export const ButtonCreate = ({ flag, itemId, refreshAllRequests }) => {
         <a
           key={name}
           onClick={() => {
-            eventOnClick(eventClick, itemId);
+            eventOnClick(eventClick, itemId, setInfoAboutTask);
             // if (eventClick==='DELETE') {}
             refreshAllRequests();
           }}

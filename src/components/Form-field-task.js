@@ -1,22 +1,32 @@
 import style from '../App.module.css';
 import { ButtonCreate } from './ButtonCreate';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { requestAddTask, validateTaskField } from './util/form-util-event';
+import { useExchangeButton } from './util/use-exchange-button';
+import { submitEvent } from './util/submit-event';
 
-export const FormFieldTask = ({ refreshAllRequests }) => {
+export const FormFieldTask = ({
+  refreshAllRequests,
+  infoAboutTask,
+  setInfoAboutTask,
+}) => {
   const [value, setValue] = useState('');
+  useExchangeButton(infoAboutTask, setValue);
 
-  // const onChangeTaskField = ({ target }) => {
-  //   setValue(target.value);
-  // };
+  const onChangeTaskField = ({ target }) => {
+    setValue(target.value);
+  };
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    if (value === '') {
-      console.error('ошибка');
-    }
-    requestAddTask(value, refreshAllRequests);
+    submitEvent(value, refreshAllRequests, infoAboutTask);
+    setInfoAboutTask({
+      id: '',
+      title: '',
+      flagForButton: 'add',
+    });
     setValue('');
+    refreshAllRequests();
   };
 
   return (
@@ -30,9 +40,13 @@ export const FormFieldTask = ({ refreshAllRequests }) => {
             name="fieldNewTask"
             placeholder={'Напишите что вы хотите сделать'}
             value={value}
-            onChange={({ target }) => setValue(target.value)}
+            onChange={onChangeTaskField}
           />
-          <button className={style.button}>Добавить задачу</button>
+          <button className={style.button}>
+            {infoAboutTask.flagForButton === 'edit'
+              ? 'Изменить задачу'
+              : 'Добавить задачу'}
+          </button>
         </div>
         <div className={style.flexField}>
           <ButtonCreate flag={true} />
