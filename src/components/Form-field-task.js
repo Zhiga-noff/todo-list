@@ -3,26 +3,19 @@ import { ButtonCreate } from './ButtonCreate';
 import { useState } from 'react';
 import { requestAddTask, validateTaskField } from './util/form-util-event';
 
-export const FormFieldTask = ({
-  refreshFlag,
-  setRefreshFlag,
-  buttonFlagRefresh,
-  setButtonFlagRefresh,
-}) => {
+export const FormFieldTask = ({ refreshAllRequests }) => {
   const [value, setValue] = useState('');
 
-  const onChangeTaskField = ({ target }) => {
-    setValue(target.value);
-  };
+  // const onChangeTaskField = ({ target }) => {
+  //   setValue(target.value);
+  // };
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    const valid = validateTaskField(value);
-    if (!valid) {
-      return;
+    if (value === '') {
+      console.error('ошибка');
     }
-    requestAddTask(value, refreshFlag, setRefreshFlag);
-    setButtonFlagRefresh(true);
+    requestAddTask(value, refreshAllRequests);
     setValue('');
   };
 
@@ -37,11 +30,9 @@ export const FormFieldTask = ({
             name="fieldNewTask"
             placeholder={'Напишите что вы хотите сделать'}
             value={value}
-            onChange={onChangeTaskField}
+            onChange={({ target }) => setValue(target.value)}
           />
-          <button disabled={buttonFlagRefresh} className={style.button}>
-            Добавить задачу
-          </button>
+          <button className={style.button}>Добавить задачу</button>
         </div>
         <div className={style.flexField}>
           <ButtonCreate flag={true} />

@@ -15,6 +15,7 @@ export const ButtonCreate = ({ flag, itemId, refreshAllRequests }) => {
           key={name}
           onClick={() => {
             eventOnClick(eventClick, itemId);
+            // if (eventClick==='DELETE') {}
             refreshAllRequests();
           }}
         >
