@@ -9,7 +9,6 @@ export const requestAddTask = async (value, refreshAllRequests) => {
         title: value,
       }),
     });
-    const result = await response.json();
     refreshAllRequests();
   } catch (error) {
     console.error(error);

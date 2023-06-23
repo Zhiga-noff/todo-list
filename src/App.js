@@ -11,6 +11,7 @@ export const App = () => {
     id: '',
     title: '',
     flagForButton: 'add',
+    tasksList: [],
   });
 
   const refreshAllRequests = () => {
@@ -28,6 +29,7 @@ export const App = () => {
         <TaskName
           refreshFlag={refreshFlag}
           refreshAllRequests={refreshAllRequests}
+          infoAboutTask={infoAboutTask}
           setInfoAboutTask={setInfoAboutTask}
         />
       </ul>

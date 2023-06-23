@@ -3,19 +3,24 @@ import { ButtonCreate } from './ButtonCreate';
 import { useEffect, useState } from 'react';
 import { createNewTask } from './modules/create-new-task';
 
-export const TaskName = ({ refreshFlag, refreshAllRequests, setInfoAboutTask }) => {
-  const [tasks, setTasks] = useState([]);
+export const TaskName = ({
+  refreshFlag,
+  refreshAllRequests,
+  infoAboutTask,
+  setInfoAboutTask,
+}) => {
+  const { tasksList } = infoAboutTask;
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    createNewTask(setTasks, setIsLoading);
+    createNewTask(setInfoAboutTask, setIsLoading);
   }, [refreshFlag]);
 
   return isLoading ? (
     <div className={style.loader}></div>
   ) : (
-    tasks.map(({ id, title }) => (
+    tasksList.map(({ id, title }) => (
       <li className={style.task} key={id}>
         <p>{title}</p>
         <div className={style.icons}>

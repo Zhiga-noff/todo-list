@@ -1,7 +1,6 @@
 import style from '../App.module.css';
 import { ButtonCreate } from './ButtonCreate';
-import { useEffect, useState } from 'react';
-import { requestAddTask, validateTaskField } from './util/form-util-event';
+import { useState } from 'react';
 import { useExchangeButton } from './util/use-exchange-button';
 import { submitEvent } from './util/submit-event';
 
@@ -20,13 +19,14 @@ export const FormFieldTask = ({
   const onSubmitFormTask = (event) => {
     event.preventDefault();
     submitEvent(value, refreshAllRequests, infoAboutTask);
-    setInfoAboutTask({
+    setInfoAboutTask((pre) => ({
+      ...pre,
       id: '',
       title: '',
       flagForButton: 'add',
-    });
+    }));
     setValue('');
-    refreshAllRequests();
+    // refreshAllRequests();
   };
 
   return (
@@ -49,7 +49,12 @@ export const FormFieldTask = ({
           </button>
         </div>
         <div className={style.flexField}>
-          <ButtonCreate flag={true} />
+          <ButtonCreate
+            flag={true}
+            itemId={''}
+            refreshAllRequests={refreshAllRequests}
+            setInfoAboutTask={setInfoAboutTask}
+          />
         </div>
       </div>
     </form>
