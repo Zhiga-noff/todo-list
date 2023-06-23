@@ -17,6 +17,5 @@ export const filterTask = async (setInfoAboutTask) => {
   setInfoAboutTask((pre) => ({
     ...pre,
     tasksList: sortResult,
-    noRefreshFlag: true,
   }));
 };
