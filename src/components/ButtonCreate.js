@@ -35,7 +35,7 @@ export const ButtonCreate = ({ flag, itemId, refreshAllRequests, setInfoAboutTas
           key={name}
           onClick={() => {
             eventOnClick(eventClick, itemId, setInfoAboutTask);
-            // refreshAllRequests();
+            refreshAllRequests();
           }}
         >
           <img src={url} alt="" />

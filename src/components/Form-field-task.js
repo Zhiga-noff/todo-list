@@ -26,7 +26,6 @@ export const FormFieldTask = ({
       flagForButton: 'add',
     }));
     setValue('');
-    // refreshAllRequests();
   };
 
   return (
@@ -51,7 +50,6 @@ export const FormFieldTask = ({
         <div className={style.flexField}>
           <ButtonCreate
             flag={true}
-            itemId={''}
             refreshAllRequests={refreshAllRequests}
             setInfoAboutTask={setInfoAboutTask}
           />
