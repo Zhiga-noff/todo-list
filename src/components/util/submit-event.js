@@ -1,6 +1,11 @@
 import { requestAddTask, requestEditTask, requestSearchTask } from './form-util-event';
 
-export const submitEvent = (value, refreshAllRequests, infoAboutTask) => {
+export const submitEvent = (
+  value,
+  refreshAllRequests,
+  infoAboutTask,
+  setInfoAboutTask,
+) => {
   if (value === '') {
     console.error('ошибка');
   } else {
@@ -12,7 +17,7 @@ export const submitEvent = (value, refreshAllRequests, infoAboutTask) => {
         requestEditTask(value, refreshAllRequests, infoAboutTask);
         break;
       case 'search':
-        requestSearchTask();
+        requestSearchTask(value, infoAboutTask, setInfoAboutTask);
         break;
     }
   }

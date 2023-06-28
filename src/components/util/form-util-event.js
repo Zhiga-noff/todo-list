@@ -31,6 +31,14 @@ export const requestEditTask = async (value, refreshAllRequests, infoAboutTask) 
   }
 };
 
-export const requestSearchTask = () => {
-  console.log('click');
+export const requestSearchTask = (value, infoAboutTask, setInfoAboutTask) => {
+  const { tasksList } = infoAboutTask;
+  const foundTask = [];
+  tasksList.forEach((item) => {
+    if (item.title.includes(value)) {
+      foundTask.push(item);
+    }
+  });
+
+  setInfoAboutTask((pre) => ({ ...pre, tasksList: foundTask }));
 };

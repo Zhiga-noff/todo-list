@@ -19,13 +19,16 @@ export const FormFieldTask = ({
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    submitEvent(value, refreshAllRequests, infoAboutTask);
-    setInfoAboutTask((pre) => ({
-      ...pre,
-      id: '',
-      title: '',
-      flagForButton: 'add',
-    }));
+    submitEvent(value, refreshAllRequests, infoAboutTask, setInfoAboutTask);
+    if (!infoAboutTask.flagForButton === 'search') {
+      setInfoAboutTask((pre) => ({
+        ...pre,
+        id: '',
+        title: '',
+        flagForButton: 'add',
+      }));
+    }
+
     setValue('');
   };
 
@@ -45,6 +48,7 @@ export const FormFieldTask = ({
           />
           <ButtonForForm
             infoAboutTask={infoAboutTask}
+            setInfoAboutTask={setInfoAboutTask}
             refreshAllRequests={refreshAllRequests}
           />
         </div>

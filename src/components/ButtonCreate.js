@@ -1,6 +1,5 @@
 import { buttonsIcon } from '../data/buttons-icon';
 import { eventOnClick } from './util/event-on-click';
-import { useState } from 'react';
 import { noRefreshTask } from './modules/no-refresh-task';
 
 export const ButtonCreate = ({
@@ -21,8 +20,6 @@ export const ButtonCreate = ({
             if (infoAboutTask.noRefreshFlag) {
               refreshAllRequests();
             }
-
-            console.log(infoAboutTask);
           }}
         >
           <img src={url} alt="" />

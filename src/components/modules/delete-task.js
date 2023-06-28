@@ -5,7 +5,6 @@ export const deleteTask = async (id) => {
     const response = await fetch(`${TODOS_URL}/${id}`, {
       method: 'DELETE',
     });
-    const result = await response.json();
   } catch (error) {
     console.error(error);
   }
