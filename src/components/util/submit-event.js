@@ -11,6 +11,8 @@ export const submitEvent = (value, refreshAllRequests, infoAboutTask) => {
       case 'edit':
         requestEditTask(value, refreshAllRequests, infoAboutTask);
         break;
+      case 'search':
+        break;
     }
   }
 };
