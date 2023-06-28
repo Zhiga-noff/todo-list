@@ -2,7 +2,13 @@ import { buttonsIcon } from '../data/buttons-icon';
 import { eventOnClick } from './util/event-on-click';
 import { useState } from 'react';
 
-export const ButtonCreate = ({ flag, itemId, refreshAllRequests, setInfoAboutTask }) => {
+export const ButtonCreate = ({
+  flag,
+  itemId,
+  refreshAllRequests,
+  infoAboutTask,
+  setInfoAboutTask,
+}) => {
   const [noRefreshFlag, setNoRefreshFlag] = useState(false);
 
   const noRefreshFunction = () => {
@@ -34,7 +40,7 @@ export const ButtonCreate = ({ flag, itemId, refreshAllRequests, setInfoAboutTas
         <a
           key={name}
           onClick={() => {
-            eventOnClick(eventClick, itemId, setInfoAboutTask);
+            eventOnClick(eventClick, itemId, infoAboutTask, setInfoAboutTask);
             refreshAllRequests();
           }}
         >

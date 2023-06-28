@@ -51,6 +51,7 @@ export const FormFieldTask = ({
           <ButtonCreate
             flag={true}
             refreshAllRequests={refreshAllRequests}
+            infoAboutTask={infoAboutTask}
             setInfoAboutTask={setInfoAboutTask}
           />
         </div>

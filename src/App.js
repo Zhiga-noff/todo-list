@@ -1,5 +1,5 @@
 import style from './App.module.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { FormFieldTask } from './components/Form-field-task';
 import { TaskName } from './components/TaskName';
 
@@ -12,6 +12,7 @@ export const App = () => {
     title: '',
     flagForButton: 'add',
     tasksList: [],
+    inputFieldRef: useRef(null),
   });
 
   const refreshAllRequests = () => {
