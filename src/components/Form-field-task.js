@@ -20,7 +20,7 @@ export const FormFieldTask = ({
   const onSubmitFormTask = (event) => {
     event.preventDefault();
     submitEvent(value, refreshAllRequests, infoAboutTask, setInfoAboutTask);
-    if (!infoAboutTask.flagForButton === 'search') {
+    if (infoAboutTask.flagForButton !== 'search') {
       setInfoAboutTask((pre) => ({
         ...pre,
         id: '',
