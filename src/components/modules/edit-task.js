@@ -4,7 +4,6 @@ export const editTask = async (itemId, setInfoAboutTask) => {
   try {
     const responseTask = await fetch(`${TODOS_URL}/${itemId}`, {});
     const result = await responseTask.json();
-    console.log(result);
     setInfoAboutTask((pre) => ({
       ...pre,
       id: itemId,

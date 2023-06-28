@@ -1,5 +1,5 @@
 import { buttonsIcon } from '../data/buttons-icon';
-import { eventOnClick } from './util/eventOnClick';
+import { eventOnClick } from './util/event-on-click';
 import { useState } from 'react';
 
 export const ButtonCreate = ({ flag, itemId, refreshAllRequests, setInfoAboutTask }) => {
