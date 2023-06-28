@@ -5,7 +5,7 @@ export const noRefreshTask = (infoAboutTask, setInfoAboutTask) => {
     } else {
       setInfoAboutTask((pre) => ({
         ...pre,
-        flagForButton: 'filter',
+        flagForButton: 'add',
         noRefreshFlag: true,
       }));
     }

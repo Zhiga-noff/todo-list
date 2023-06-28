@@ -1,4 +1,4 @@
-import { requestAddTask, requestEditTask } from './form-util-event';
+import { requestAddTask, requestEditTask, requestSearchTask } from './form-util-event';
 
 export const submitEvent = (value, refreshAllRequests, infoAboutTask) => {
   if (value === '') {
@@ -12,6 +12,7 @@ export const submitEvent = (value, refreshAllRequests, infoAboutTask) => {
         requestEditTask(value, refreshAllRequests, infoAboutTask);
         break;
       case 'search':
+        requestSearchTask();
         break;
     }
   }

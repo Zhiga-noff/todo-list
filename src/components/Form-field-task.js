@@ -3,6 +3,7 @@ import { ButtonCreate } from './ButtonCreate';
 import { useState } from 'react';
 import { useExchangeButton } from './util/use-exchange-button';
 import { submitEvent } from './util/submit-event';
+import { ButtonForForm } from './ButtonForForm';
 
 export const FormFieldTask = ({
   refreshAllRequests,
@@ -42,15 +43,10 @@ export const FormFieldTask = ({
             onChange={onChangeTaskField}
             ref={infoAboutTask.inputFieldRef}
           />
-          <button className={style.button}>
-            {infoAboutTask.flagForButton === 'edit'
-              ? 'Изменить задачу'
-              : 'search'
-              ? 'Поиск'
-              : 'filter'
-              ? ''
-              : 'Добавить задачу'}
-          </button>
+          <ButtonForForm
+            infoAboutTask={infoAboutTask}
+            refreshAllRequests={refreshAllRequests}
+          />
         </div>
         <div className={style.flexField}>
           <ButtonCreate

@@ -10,16 +10,6 @@ export const ButtonCreate = ({
   infoAboutTask,
   setInfoAboutTask,
 }) => {
-  // const [noRefreshFlag, setNoRefreshFlag] = useState(false);
-  //
-  // const noRefreshFunction = () => {
-  //   if (noRefreshFlag) {
-  //     setNoRefreshFlag(false);
-  //   } else {
-  //     setNoRefreshFlag(true);
-  //   }
-  // };
-
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (flag && (name === 'filter' || name === 'search')) {
       return (
@@ -27,10 +17,11 @@ export const ButtonCreate = ({
           key={name}
           onClick={() => {
             eventOnClick(eventClick, itemId, infoAboutTask, setInfoAboutTask);
+            noRefreshTask(infoAboutTask, setInfoAboutTask);
             if (infoAboutTask.noRefreshFlag) {
               refreshAllRequests();
             }
-            noRefreshTask(infoAboutTask, setInfoAboutTask);
+
             console.log(infoAboutTask);
           }}
         >

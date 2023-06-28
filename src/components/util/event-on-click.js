@@ -12,7 +12,7 @@ export const eventOnClick = (eventClick, itemId, infoAboutTask, setInfoAboutTask
       editTask(itemId, infoAboutTask, setInfoAboutTask);
       break;
     case 'filter':
-      filterTask(setInfoAboutTask);
+      filterTask(infoAboutTask, setInfoAboutTask);
       break;
     case 'search':
       searchTasks(infoAboutTask, setInfoAboutTask);

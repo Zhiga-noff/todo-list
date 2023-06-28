@@ -31,4 +31,6 @@ export const requestEditTask = async (value, refreshAllRequests, infoAboutTask) 
   }
 };
 
-export const requestSearchTask = () => {};
+export const requestSearchTask = () => {
+  console.log('click');
+};

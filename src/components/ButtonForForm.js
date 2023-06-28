@@ -1,12 +1,19 @@
 import style from '../App.module.css';
 
-export const ButtonForForm = ({ infoAboutTask }) => {
+export const ButtonForForm = ({ infoAboutTask, refreshAllRequests }) => {
   const { flagForButton } = infoAboutTask;
   if (flagForButton === 'edit') {
-    return <button className={style.button}>Изменить задачу</button>;
+    return <button className={style.buttonOrange}>Изменить задачу</button>;
   }
   if (flagForButton === 'search') {
-    return <button className={style.button}>Поиск</button>;
+    return (
+      <>
+        <button className={style.buttonGrey}>Поиск</button>
+        <button type={'button'} className={style.buttonRed} onClick={refreshAllRequests}>
+          Сбросить
+        </button>
+      </>
+    );
   }
   if (flagForButton === 'filter') {
     return (
@@ -19,13 +26,3 @@ export const ButtonForForm = ({ infoAboutTask }) => {
     return <button className={style.button}>Добавить задачу</button>;
   }
 };
-
-{
-  infoAboutTask.flagForButton === 'edit'
-    ? 'Изменить задачу'
-    : 'search'
-    ? 'Поиск'
-    : 'filter'
-    ? ''
-    : 'Добавить задачу';
-}
