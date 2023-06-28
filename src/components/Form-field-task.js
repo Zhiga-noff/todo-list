@@ -40,10 +40,15 @@ export const FormFieldTask = ({
             placeholder={'Напишите что вы хотите сделать'}
             value={value}
             onChange={onChangeTaskField}
+            ref={infoAboutTask.inputFieldRef}
           />
           <button className={style.button}>
             {infoAboutTask.flagForButton === 'edit'
               ? 'Изменить задачу'
+              : 'search'
+              ? 'Поиск'
+              : 'filter'
+              ? ''
               : 'Добавить задачу'}
           </button>
         </div>

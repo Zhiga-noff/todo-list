@@ -13,6 +13,7 @@ export const App = () => {
     flagForButton: 'add',
     tasksList: [],
     inputFieldRef: useRef(null),
+    noRefreshFlag: false,
   });
 
   const refreshAllRequests = () => {

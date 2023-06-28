@@ -1,3 +1,7 @@
-export const searchTasks = () => {
-  let flag;
+export const searchTasks = (infoAboutTask, setInfoAboutTask) => {
+  setInfoAboutTask((pre) => ({
+    ...pre,
+    flagForButton: 'search',
+  }));
+  infoAboutTask.inputFieldRef.current.focus();
 };

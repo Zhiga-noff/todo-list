@@ -15,7 +15,7 @@ export const eventOnClick = (eventClick, itemId, infoAboutTask, setInfoAboutTask
       filterTask(setInfoAboutTask);
       break;
     case 'search':
-      searchTasks();
+      searchTasks(infoAboutTask, setInfoAboutTask);
       break;
   }
 };

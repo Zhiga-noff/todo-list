@@ -30,3 +30,5 @@ export const requestEditTask = async (value, refreshAllRequests, infoAboutTask) 
     console.log(error);
   }
 };
+
+export const requestSearchTask = () => {};

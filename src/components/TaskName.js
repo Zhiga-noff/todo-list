@@ -28,6 +28,7 @@ export const TaskName = ({
             flag={false}
             itemId={id}
             refreshAllRequests={refreshAllRequests}
+            infoAboutTask={infoAboutTask}
             setInfoAboutTask={setInfoAboutTask}
           />
         </div>

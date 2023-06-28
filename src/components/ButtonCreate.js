@@ -1,6 +1,7 @@
 import { buttonsIcon } from '../data/buttons-icon';
 import { eventOnClick } from './util/event-on-click';
 import { useState } from 'react';
+import { noRefreshTask } from './modules/no-refresh-task';
 
 export const ButtonCreate = ({
   flag,
@@ -9,15 +10,15 @@ export const ButtonCreate = ({
   infoAboutTask,
   setInfoAboutTask,
 }) => {
-  const [noRefreshFlag, setNoRefreshFlag] = useState(false);
-
-  const noRefreshFunction = () => {
-    if (noRefreshFlag) {
-      setNoRefreshFlag(false);
-    } else {
-      setNoRefreshFlag(true);
-    }
-  };
+  // const [noRefreshFlag, setNoRefreshFlag] = useState(false);
+  //
+  // const noRefreshFunction = () => {
+  //   if (noRefreshFlag) {
+  //     setNoRefreshFlag(false);
+  //   } else {
+  //     setNoRefreshFlag(true);
+  //   }
+  // };
 
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (flag && (name === 'filter' || name === 'search')) {
@@ -25,11 +26,12 @@ export const ButtonCreate = ({
         <a
           key={name}
           onClick={() => {
-            eventOnClick(eventClick, itemId, setInfoAboutTask);
-            if (noRefreshFlag) {
+            eventOnClick(eventClick, itemId, infoAboutTask, setInfoAboutTask);
+            if (infoAboutTask.noRefreshFlag) {
               refreshAllRequests();
             }
-            noRefreshFunction();
+            noRefreshTask(infoAboutTask, setInfoAboutTask);
+            console.log(infoAboutTask);
           }}
         >
           <img src={url} alt="" />

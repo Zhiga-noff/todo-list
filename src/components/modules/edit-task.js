@@ -1,7 +1,7 @@
 import { TODOS_URL } from '../../App';
 
 export const editTask = async (itemId, infoAboutTask, setInfoAboutTask) => {
-  const { inputFieldRef } = infoAboutTask;
+  // const { inputFieldRef } = infoAboutTask;
 
   try {
     const responseTask = await fetch(`${TODOS_URL}/${itemId}`, {});
@@ -12,8 +12,8 @@ export const editTask = async (itemId, infoAboutTask, setInfoAboutTask) => {
       title: result.title,
       flagForButton: 'edit',
     }));
-    infoAboutTask.current.focus;
+    infoAboutTask.inputFieldRef.current.focus();
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
