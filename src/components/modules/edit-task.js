@@ -1,5 +1,3 @@
-import { TODOS_URL } from '../../App';
-
 export const editTask = async (itemId, infoAboutTask, setInfoAboutTask) => {
   const titleTask = infoAboutTask?.tasksList[itemId]?.title;
 

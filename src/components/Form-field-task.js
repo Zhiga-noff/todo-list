@@ -5,11 +5,7 @@ import { useExchangeButton } from './util/use-exchange-button';
 import { submitEvent } from './util/submit-event';
 import { ButtonForForm } from './ButtonForForm';
 
-export const FormFieldTask = ({
-  refreshAllRequests,
-  infoAboutTask,
-  setInfoAboutTask,
-}) => {
+export const FormFieldTask = ({ infoAboutTask, setInfoAboutTask }) => {
   const [value, setValue] = useState('');
   useExchangeButton(infoAboutTask, setValue);
 
@@ -19,7 +15,7 @@ export const FormFieldTask = ({
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    submitEvent(value, refreshAllRequests, infoAboutTask, setInfoAboutTask);
+    submitEvent(value, infoAboutTask, setInfoAboutTask);
     if (infoAboutTask.flagForButton !== 'search') {
       setInfoAboutTask((pre) => ({
         ...pre,
@@ -49,13 +45,11 @@ export const FormFieldTask = ({
           <ButtonForForm
             infoAboutTask={infoAboutTask}
             setInfoAboutTask={setInfoAboutTask}
-            refreshAllRequests={refreshAllRequests}
           />
         </div>
         <div className={style.flexField}>
           <ButtonCreate
             flag={true}
-            refreshAllRequests={refreshAllRequests}
             infoAboutTask={infoAboutTask}
             setInfoAboutTask={setInfoAboutTask}
           />

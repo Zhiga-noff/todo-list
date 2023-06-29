@@ -1,14 +1,7 @@
 import { buttonsIcon } from '../data/buttons-icon';
 import { eventOnClick } from './util/event-on-click';
-import { noRefreshTask } from './modules/no-refresh-task';
 
-export const ButtonCreate = ({
-  flag,
-  itemId,
-  refreshAllRequests,
-  infoAboutTask,
-  setInfoAboutTask,
-}) => {
+export const ButtonCreate = ({ flag, itemId, infoAboutTask, setInfoAboutTask }) => {
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (flag && (name === 'filter' || name === 'search')) {
       return (
@@ -16,10 +9,6 @@ export const ButtonCreate = ({
           key={name}
           onClick={() => {
             eventOnClick(eventClick, itemId, infoAboutTask, setInfoAboutTask);
-            noRefreshTask(infoAboutTask, setInfoAboutTask);
-            if (infoAboutTask.noRefreshFlag) {
-              refreshAllRequests();
-            }
           }}
         >
           <img src={url} alt="" />
@@ -31,7 +20,6 @@ export const ButtonCreate = ({
           key={name}
           onClick={() => {
             eventOnClick(eventClick, itemId, infoAboutTask, setInfoAboutTask);
-            refreshAllRequests();
           }}
         >
           <img src={url} alt="" />

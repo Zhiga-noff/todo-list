@@ -1,10 +1,6 @@
 import style from '../App.module.css';
 
-export const ButtonForForm = ({
-  infoAboutTask,
-  setInfoAboutTask,
-  refreshAllRequests,
-}) => {
+export const ButtonForForm = ({ infoAboutTask, setInfoAboutTask }) => {
   const { flagForButton } = infoAboutTask;
   if (flagForButton === 'edit') {
     return <button className={style.buttonOrange}>Изменить задачу</button>;
@@ -17,7 +13,6 @@ export const ButtonForForm = ({
           type={'button'}
           className={style.buttonRed}
           onClick={() => {
-            refreshAllRequests();
             setInfoAboutTask((pre) => ({ ...pre, flagForButton: 'add' }));
           }}
         >
