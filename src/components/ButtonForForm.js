@@ -8,8 +8,7 @@ export const ButtonForForm = ({
   const { flagForButton } = infoAboutTask;
   if (flagForButton === 'edit') {
     return <button className={style.buttonOrange}>Изменить задачу</button>;
-  }
-  if (flagForButton === 'search') {
+  } else if (flagForButton === 'search') {
     return (
       <>
         <button className={style.buttonGrey}>Поиск</button>
@@ -25,15 +24,7 @@ export const ButtonForForm = ({
         </button>
       </>
     );
-  }
-  if (flagForButton === 'filter') {
-    return (
-      <button disabled={true} className={style.button}>
-        Добавить задачу
-      </button>
-    );
-  }
-  if (flagForButton === 'add') {
+  } else {
     return <button className={style.button}>Добавить задачу</button>;
   }
 };
