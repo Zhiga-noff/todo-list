@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { createNewTask } from './modules/create-new-task';
 
 export const TaskName = ({
-  refreshFlag,
+  // refreshFlag,
   refreshAllRequests,
   infoAboutTask,
   setInfoAboutTask,
@@ -15,12 +15,29 @@ export const TaskName = ({
   useEffect(() => {
     setIsLoading(true);
     createNewTask(setInfoAboutTask, setIsLoading);
-  }, [refreshFlag]);
+  }, []);
+
+  // console.log(tasksList);
 
   return isLoading ? (
-    <div className={style.loader}></div>
+    <div className={style.loader} />
+  ) : infoAboutTask.flagForButton === 'filter' ? (
+    tasksList.map(([id, { title }]) => (
+      <li className={style.task} key={id}>
+        <p>{title}</p>
+        <div className={style.icons}>
+          <ButtonCreate
+            flag={false}
+            itemId={id}
+            refreshAllRequests={refreshAllRequests}
+            infoAboutTask={infoAboutTask}
+            setInfoAboutTask={setInfoAboutTask}
+          />
+        </div>
+      </li>
+    ))
   ) : (
-    tasksList.map(({ id, title }) => (
+    Object.entries(tasksList).map(([id, { title }]) => (
       <li className={style.task} key={id}>
         <p>{title}</p>
         <div className={style.icons}>
@@ -36,3 +53,20 @@ export const TaskName = ({
     ))
   );
 };
+
+// (
+//     tasksList.map(({ id, title }) => (
+//         <li className={style.task} key={id}>
+//             <p>{title}</p>
+//             <div className={style.icons}>
+//                 <ButtonCreate
+//                     flag={false}
+//                     itemId={id}
+//                     refreshAllRequests={refreshAllRequests}
+//                     infoAboutTask={infoAboutTask}
+//                     setInfoAboutTask={setInfoAboutTask}
+//                 />
+//             </div>
+//         </li>
+//     ))
+// );

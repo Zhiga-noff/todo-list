@@ -1,15 +1,14 @@
-import { TODOS_URL } from '../../App';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../../firebase';
 
 export async function createNewTask(setInfoAboutTask, setIsLoading) {
-  try {
-    const response = await fetch(TODOS_URL);
-    const result = await response.json();
+  const tasksDbRef = ref(db, 'todos');
+  return onValue(tasksDbRef, (snapshot) => {
+    const loadedTasks = snapshot.val();
     setInfoAboutTask((pre) => ({
       ...pre,
-      tasksList: result,
+      tasksList: loadedTasks || {},
     }));
     setIsLoading(false);
-  } catch (error) {
-    console.error(error);
-  }
+  });
 }

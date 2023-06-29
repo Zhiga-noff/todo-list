@@ -1,11 +1,7 @@
-import { TODOS_URL } from '../../App';
+import { ref, remove } from 'firebase/database';
+import { db } from '../../firebase';
 
 export const deleteTask = async (id) => {
-  try {
-    const response = await fetch(`${TODOS_URL}/${id}`, {
-      method: 'DELETE',
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  const taskRemoveDbRef = ref(db, `todos/${id}`);
+  remove(taskRemoveDbRef);
 };
