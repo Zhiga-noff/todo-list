@@ -1,8 +1,11 @@
-import { TODOS_URL } from '../../App';
+export const editTask = async (itemId, infoAboutTask, setInfoAboutTask) => {
+  const titleTask = infoAboutTask?.tasksList[itemId]?.title;
 
-export const editTask = async (tasks, itemId, setIsEditTask, setValue, setTaskId, inputRef) => {
-  setTaskId(itemId);
-  setValue(tasks[itemId].title);
-  setIsEditTask(true);
-  inputRef.current.focus();
+  setInfoAboutTask((pre) => ({
+    ...pre,
+    id: itemId,
+    title: titleTask,
+    flagForButton: 'edit',
+  }));
+  infoAboutTask.inputFieldRef.current.focus();
 };

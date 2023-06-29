@@ -1,48 +1,31 @@
 import style from '../App.module.css';
 import { ButtonCreate } from './ButtonCreate';
-import { requestAddTask, requestUpdateTask, searchTaskRequest } from './util/form-util-event';
+import { useState } from 'react';
+import { useExchangeButton } from './util/use-exchange-button';
+import { submitEvent } from './util/submit-event';
+import { ButtonForForm } from './ButtonForForm';
 
-export const FormFieldTask = ({
-  tasks,
-  setTasks,
-  refreshFlag,
-  setRefreshFlag,
-  isEditTask,
-  setIsEditTask,
-  buttonFlagRefresh,
-  value,
-  setValue,
-  taskId,
-  setTaskId,
-  inputRef,
-  clickFilter,
-  setClickFilter,
-  isSearchTask,
-  setIsSearchTask,
-}) => {
+export const FormFieldTask = ({ infoAboutTask, setInfoAboutTask }) => {
+  const [value, setValue] = useState('');
+  useExchangeButton(infoAboutTask, setValue);
+
   const onChangeTaskField = ({ target }) => {
     setValue(target.value);
   };
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    if (value === '') {
-      console.error('Ошибка');
-      return;
+    submitEvent(value, infoAboutTask, setInfoAboutTask);
+    if (infoAboutTask.flagForButton !== 'search') {
+      setInfoAboutTask((pre) => ({
+        ...pre,
+        id: '',
+        title: '',
+        flagForButton: 'add',
+      }));
     }
-    if (isEditTask) {
-      requestUpdateTask(value, refreshFlag, setRefreshFlag, taskId);
-      setTaskId('');
-      setIsEditTask(false);
-      setValue('');
-    } else if (isSearchTask) {
-      setClickFilter(true);
-      searchTaskRequest(tasks, value, setTasks);
-      setValue('');
-    } else {
-      requestAddTask(value);
-      setValue('');
-    }
+
+    setValue('');
   };
 
   return (
@@ -57,49 +40,18 @@ export const FormFieldTask = ({
             placeholder={'Напишите что вы хотите сделать'}
             value={value}
             onChange={onChangeTaskField}
-            ref={inputRef}
+            ref={infoAboutTask.inputFieldRef}
           />
-          {isEditTask ? (
-            <button disabled={buttonFlagRefresh} className={style.buttonOrange}>
-              Внести изменения
-            </button>
-          ) : isSearchTask ? (
-            <>
-              <button className={style.buttonGrey}>Поиск</button>
-              <button
-                type={'button'}
-                onClick={() => {
-                  setRefreshFlag(!refreshFlag);
-                  setIsSearchTask(false);
-                  setClickFilter(false);
-                }}
-                className={style.buttonRed}
-              >
-                Сбросить
-              </button>
-            </>
-          ) : (
-            <button disabled={buttonFlagRefresh} className={style.button}>
-              Добавить задачу
-            </button>
-          )}
+          <ButtonForForm
+            infoAboutTask={infoAboutTask}
+            setInfoAboutTask={setInfoAboutTask}
+          />
         </div>
         <div className={style.flexField}>
           <ButtonCreate
             flag={true}
-            tasks={tasks}
-            setTasks={setTasks}
-            refreshFlag={refreshFlag}
-            setRefreshFlag={setRefreshFlag}
-            setIsEditTask={setIsEditTask}
-            value={value}
-            setValue={setValue}
-            setTaskId={setTaskId}
-            inputRef={inputRef}
-            clickFilter={clickFilter}
-            setClickFilter={setClickFilter}
-            isSearchTask={isSearchTask}
-            setIsSearchTask={setIsSearchTask}
+            infoAboutTask={infoAboutTask}
+            setInfoAboutTask={setInfoAboutTask}
           />
         </div>
       </div>
