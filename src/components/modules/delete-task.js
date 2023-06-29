@@ -1,4 +1,3 @@
-import { TODOS_URL } from '../../App';
 import { ref, remove } from 'firebase/database';
 import { db } from '../../firebase';
 

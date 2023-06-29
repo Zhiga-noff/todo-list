@@ -44,4 +44,3 @@ export const TaskName = ({ infoAboutTask, setInfoAboutTask }) => {
     ))
   );
 };
-
