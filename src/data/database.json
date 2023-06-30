@@ -1,10 +1,6 @@
 {
   "todos": [
     {
-      "title": "delectus aut autem",
-      "id": 1
-    },
-    {
       "title": "quis ut nam facilis et officia qui",
       "id": 2
     },
@@ -41,20 +37,12 @@
       "id": 11
     },
     {
-      "title": "Давай я приду и все доделаем",
+      "title": "Давай что нибудь новое?",
       "id": 12
     },
     {
       "title": "dsfasdf",
       "id": 13
-    },
-    {
-      "title": "qerqwerfasdfasdfaвапфвыапфп",
-      "id": 14
-    },
-    {
-      "title": "DAsdaSDasdaSDasdaSDasdasFAsfadsFdsaf",
-      "id": 15
     }
   ]
 }

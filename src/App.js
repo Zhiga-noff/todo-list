@@ -2,6 +2,8 @@ import style from './App.module.css';
 import { useRef, useState } from 'react';
 import { FormFieldTask } from './components/Form-field-task';
 import { TaskName } from './components/TaskName';
+import { Routes, Route } from 'react-router-dom';
+import { CreateActiveTask } from './components/CreateActiveTask';
 
 export const TODOS_URL = 'http://localhost:3005/todos\n';
 
@@ -28,12 +30,31 @@ export const App = () => {
         setInfoAboutTask={setInfoAboutTask}
       />
       <ul className={style.taskList}>
-        <TaskName
-          refreshFlag={refreshFlag}
-          refreshAllRequests={refreshAllRequests}
-          infoAboutTask={infoAboutTask}
-          setInfoAboutTask={setInfoAboutTask}
-        />
+        <Routes>
+          <Route
+            path={'/'}
+            element={
+              <TaskName
+                refreshFlag={refreshFlag}
+                refreshAllRequests={refreshAllRequests}
+                infoAboutTask={infoAboutTask}
+                setInfoAboutTask={setInfoAboutTask}
+              />
+            }
+          />
+          <Route path={`/task`}>
+            <Route
+              path={':id'}
+              element={
+                <CreateActiveTask
+                  infoAboutTask={infoAboutTask}
+                  setInfoAboutTask={setInfoAboutTask}
+                />
+              }
+            />
+          </Route>
+          <Route path={'*'} />
+        </Routes>
       </ul>
     </div>
   );

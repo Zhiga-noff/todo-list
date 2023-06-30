@@ -102,6 +102,16 @@
     text-overflow: ellipsis; /* Добавляем многоточие */
 }
 
+.task a {
+    color: black;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+.task a:hover {
+    color: #8e38a6;
+}
+
 .icons {
     display: flex;
 

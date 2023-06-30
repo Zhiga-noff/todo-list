@@ -2,6 +2,7 @@ import style from '../App.module.css';
 import { ButtonCreate } from './ButtonCreate';
 import { useEffect, useState } from 'react';
 import { createNewTask } from './modules/create-new-task';
+import { Link } from 'react-router-dom';
 
 export const TaskName = ({
   refreshFlag,
@@ -22,16 +23,18 @@ export const TaskName = ({
   ) : (
     tasksList.map(({ id, title }) => (
       <li className={style.task} key={id}>
-        <p>{title}</p>
-        <div className={style.icons}>
-          <ButtonCreate
-            flag={false}
-            itemId={id}
-            refreshAllRequests={refreshAllRequests}
-            infoAboutTask={infoAboutTask}
-            setInfoAboutTask={setInfoAboutTask}
-          />
-        </div>
+        <Link to={`/task/${id}`}>
+          <p>{title}</p>
+          <div className={style.icons}>
+            {/*<ButtonCreate*/}
+            {/*  flag={false}*/}
+            {/*  itemId={id}*/}
+            {/*  refreshAllRequests={refreshAllRequests}*/}
+            {/*  infoAboutTask={infoAboutTask}*/}
+            {/*  setInfoAboutTask={setInfoAboutTask}*/}
+            {/*/>*/}
+          </div>
+        </Link>
       </li>
     ))
   );
