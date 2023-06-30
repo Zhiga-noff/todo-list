@@ -1,4 +1,4 @@
-import style from '../App.module.css';
+import style from './styles/App.module.css';
 import { ButtonCreate } from './ButtonCreate';
 import { useEffect, useState } from 'react';
 import { createNewTask } from './modules/create-new-task';
@@ -25,15 +25,7 @@ export const TaskName = ({
       <li className={style.task} key={id}>
         <Link to={`/task/${id}`}>
           <p>{title}</p>
-          <div className={style.icons}>
-            {/*<ButtonCreate*/}
-            {/*  flag={false}*/}
-            {/*  itemId={id}*/}
-            {/*  refreshAllRequests={refreshAllRequests}*/}
-            {/*  infoAboutTask={infoAboutTask}*/}
-            {/*  setInfoAboutTask={setInfoAboutTask}*/}
-            {/*/>*/}
-          </div>
+          <div className={style.icons} />
         </Link>
       </li>
     ))

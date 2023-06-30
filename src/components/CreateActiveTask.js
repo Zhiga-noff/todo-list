@@ -1,4 +1,4 @@
-import style from './TaskActive.module.css';
+import style from './styles/TaskActive.module.css';
 import { renderRequestTask } from './modules/render-request-task';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';

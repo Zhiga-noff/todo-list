@@ -1,4 +1,4 @@
-import style from './App.module.css';
+import style from './components/styles/App.module.css';
 import { useRef, useState } from 'react';
 import { FormFieldTask } from './components/Form-field-task';
 import { TaskName } from './components/TaskName';
