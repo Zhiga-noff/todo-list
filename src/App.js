@@ -2,7 +2,7 @@ import style from './components/styles/App.module.css';
 import { useRef, useState } from 'react';
 import { FormFieldTask } from './components/Form-field-task';
 import { TaskName } from './components/TaskName';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import { CreateActiveTask } from './components/CreateActiveTask';
 import { NotFoundPage } from './components/NotFoundPage';
 
@@ -43,17 +43,15 @@ export const App = () => {
               />
             }
           />
-          <Route path={`/task`}>
-            <Route
-              path={':id'}
-              element={
-                <CreateActiveTask
-                  infoAboutTask={infoAboutTask}
-                  setInfoAboutTask={setInfoAboutTask}
-                />
-              }
-            />
-          </Route>
+          <Route
+            path={`/task/:id`}
+            element={
+              <CreateActiveTask
+                infoAboutTask={infoAboutTask}
+                setInfoAboutTask={setInfoAboutTask}
+              />
+            }
+          ></Route>
           <Route path={'*'} element={<NotFoundPage />} />
         </Routes>
       </ul>
