@@ -12,7 +12,6 @@ export const CreateActiveTask = ({ infoAboutTask, setInfoAboutTask }) => {
 
   useEffect(() => {
     renderRequestTask(params.id, setTaskActive, setIsLoading);
-    setInfoAboutTask((pre) => ({ ...pre, id: Number(params.id) }));
   }, [taskActive]);
 
   return isLoading ? (

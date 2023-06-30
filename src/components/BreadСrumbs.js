@@ -1,11 +1,13 @@
 import style from './styles/BreadСrumbs.module.css';
-import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
+import { Link, NavLink, useMatch, useNavigate, useParams } from 'react-router-dom';
 import back from '../back.svg';
-import { useEffect, useState } from 'react';
-import { TaskBreadCrumbs } from './TaskBreadCrumbs';
+import { useEffect } from 'react';
 
 export const BreadСrumbs = ({ infoAboutTask, setInfoAboutTask }) => {
   const navigate = useNavigate();
+
+  const urlMatches = useMatch('/:type/:id');
+  // console.log(urlMatches.params.id);
 
   return (
     <ul className={style.breadCrumbs}>
@@ -14,12 +16,19 @@ export const BreadСrumbs = ({ infoAboutTask, setInfoAboutTask }) => {
           <img src={back} alt="" />
         </Link>
       </li>
-      <li onClick={() => setInfoAboutTask((pre) => ({ ...pre, id: '' }))}>
+      <li>
         <NavLink to={'/'} className={style.crumb}>
           Главная
         </NavLink>
       </li>
-      <TaskBreadCrumbs infoAboutTask={infoAboutTask} />
+      {urlMatches?.params?.id ? (
+        <li>
+          <NavLink className={style.crumb}>Задача №{urlMatches.params.id}</NavLink>
+        </li>
+      ) : (
+        ''
+      )}
+      {/*<TaskBreadCrumbs infoAboutTask={infoAboutTask} />*/}
     </ul>
   );
 };
