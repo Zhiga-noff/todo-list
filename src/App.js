@@ -4,6 +4,7 @@ import { FormFieldTask } from './components/Form-field-task';
 import { TaskName } from './components/TaskName';
 import { Routes, Route } from 'react-router-dom';
 import { CreateActiveTask } from './components/CreateActiveTask';
+import { NotFoundPage } from './components/NotFoundPage';
 
 export const TODOS_URL = 'http://localhost:3005/todos\n';
 
@@ -53,7 +54,7 @@ export const App = () => {
               }
             />
           </Route>
-          <Route path={'*'} />
+          <Route path={'*'} element={<NotFoundPage />} />
         </Routes>
       </ul>
     </div>
