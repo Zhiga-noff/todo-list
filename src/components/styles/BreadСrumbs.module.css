@@ -2,6 +2,7 @@
     display: flex;
     list-style: none;
     padding-left: 0;
+    align-items: center;
 }
 
 .crumb {
@@ -9,12 +10,17 @@
     text-decoration: none;
     font-size: 1rem;
     margin-right: 1rem;
+    height: 29px;
 
-    padding: 5px 0;
+    transition-duration: 0.3s;
 
     font-weight: 600;
 }
 
  :global .active {
-   border-bottom: 3px solid white ;
-}
+     background: white;
+     padding: 5px 10px;
+     border-radius: 2px;
+     color: #8e38a6;
+
+ }

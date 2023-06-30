@@ -36,7 +36,7 @@ export const FormFieldTask = ({
 
   return (
     <form action="#" className={style.form} onSubmit={onSubmitFormTask}>
-      <BreadСrumbs />
+      <BreadСrumbs infoAboutTask={infoAboutTask} setInfoAboutTask={setInfoAboutTask} />
       <p className={style.title}>Тут твои задачи</p>
       <div className={style.flexForm}>
         <div className={style.flexField}>

@@ -1,8 +1,10 @@
 import style from './styles/BreadСrumbs.module.css';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
 import back from '../back.svg';
+import { useEffect, useState } from 'react';
+import { TaskBreadCrumbs } from './TaskBreadCrumbs';
 
-export const BreadСrumbs = () => {
+export const BreadСrumbs = ({ infoAboutTask, setInfoAboutTask }) => {
   const navigate = useNavigate();
 
   return (
@@ -12,13 +14,12 @@ export const BreadСrumbs = () => {
           <img src={back} alt="" />
         </Link>
       </li>
-      <li>
+      <li onClick={() => setInfoAboutTask((pre) => ({ ...pre, id: '' }))}>
         <NavLink to={'/'} className={style.crumb}>
           Главная
         </NavLink>
       </li>
-      <li className={style.crumb}></li>
-      {/*<li><><img src="" alt=""/></></li>*/}
+      <TaskBreadCrumbs infoAboutTask={infoAboutTask} />
     </ul>
   );
 };
