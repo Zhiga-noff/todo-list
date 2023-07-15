@@ -1,8 +1,8 @@
 import style from '../styles/BreadСrumbs.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
-export const TaskBreadCrumbs = ({ infoAboutTask }) => {
-  const { id: taskId } = infoAboutTask;
+export const TaskBreadCrumbs = ({}) => {
+  const { id: taskId } = useParams();
 
   return taskId ? (
     <li>

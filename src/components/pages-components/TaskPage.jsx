@@ -2,7 +2,7 @@ import style from '../styles/TaskActive.module.css';
 import { renderRequestTask } from '../../modules/render-request-task';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { BreadRumbs } from '../reuse-components/';
+import { BreadCrumbs } from '../reuse-components/';
 import CreateSelectedTask from '../global-components/CreateSelectedTask';
 import PopupEditForm from '../global-components/PopupEditForm';
 
@@ -23,7 +23,7 @@ export const TaskPage = () => {
   return (
     <>
       <div className={style.form}>
-        <BreadRumbs />
+        <BreadCrumbs />
         <p className={style.title}> {taskActive?.title}</p>
       </div>
       {isLoading ? (

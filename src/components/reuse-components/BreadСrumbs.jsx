@@ -3,7 +3,7 @@ import { Link, NavLink, useMatch, useNavigate, useParams } from 'react-router-do
 import back from '../../img/back.svg';
 import { useEffect } from 'react';
 
-export const BreadRumbs = ({ infoAboutTask, setInfoAboutTask }) => {
+export const BreadCrumbs = () => {
   const navigate = useNavigate();
 
   const urlMatches = useMatch('/:type/:id');

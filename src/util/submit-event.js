@@ -1,21 +1,10 @@
-import { requestAddTask, requestEditTask, requestSearchTask } from './form-util-event';
+import { requestAddTask, requestSearchTask } from './form-util-event';
 
-export const submitEvent = (
-  value,
-  refreshAllRequests,
-  infoAboutTask,
-  setInfoAboutTask,
-) => {
-  if (value === '') {
-    console.error('ошибка');
-  } else {
-    switch (infoAboutTask.flagForButton) {
-      case 'add':
-        requestAddTask(value, refreshAllRequests);
-        break;
-      case 'search':
-        requestSearchTask(value, infoAboutTask, setInfoAboutTask);
-        break;
-    }
+export const submitEvent = (value, action, refreshAllRequests, taskList, setTaskList) => {
+  if (action === 'add') {
+    requestAddTask(value, refreshAllRequests);
+  }
+  if (action === 'search') {
+    requestSearchTask(value, taskList, setTaskList);
   }
 };

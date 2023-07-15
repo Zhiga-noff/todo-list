@@ -2,7 +2,7 @@ import style from '../styles/TaskActive.module.css';
 import { renderRequestTask } from '../../modules/render-request-task';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { BreadRumbs, ButtonForTask } from '../reuse-components/';
+import { BreadCrumbs, ButtonForTask } from '../reuse-components/';
 
 export const CreateSelectedTask = () => {
   const [taskActive, setTaskActive] = useState([]);
@@ -19,7 +19,7 @@ export const CreateSelectedTask = () => {
   return (
     <>
       <div className={style.form}>
-        <BreadRumbs />
+        <BreadCrumbs />
         <p className={style.title}> {taskActive?.title}</p>
       </div>
       {isLoading ? (

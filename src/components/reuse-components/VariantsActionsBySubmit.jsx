@@ -1,14 +1,7 @@
 import style from '../styles/App.module.css';
 
-export const VariantsActionsBySubmit = ({
-  infoAboutTask,
-  setInfoAboutTask,
-  refreshAllRequests,
-}) => {
-  const { flagForButton } = infoAboutTask;
-  if (flagForButton === 'edit') {
-    return <button className={style.buttonOrange}>Изменить задачу</button>;
-  } else if (flagForButton === 'search') {
+export const VariantsActionsBySubmit = ({ refreshAllRequests, action, setAction }) => {
+  if (action === 'search') {
     return (
       <>
         <button className={style.buttonGrey}>Поиск</button>
@@ -16,8 +9,8 @@ export const VariantsActionsBySubmit = ({
           type={'button'}
           className={style.buttonRed}
           onClick={() => {
+            setAction('add');
             refreshAllRequests();
-            setInfoAboutTask((pre) => ({ ...pre, flagForButton: 'add' }));
           }}
         >
           Сбросить

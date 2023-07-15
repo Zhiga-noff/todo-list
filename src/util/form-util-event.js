@@ -29,14 +29,12 @@ export const requestEditTask = async (value, taskId) => {
   }
 };
 
-export const requestSearchTask = (value, infoAboutTask, setInfoAboutTask) => {
-  const { tasksList } = infoAboutTask;
-  const foundTask = [];
-  tasksList.forEach((item) => {
+export const requestSearchTask = (value, taskList, setTaskList) => {
+  const foundTasks = [];
+  taskList.forEach((item) => {
     if (item.title.includes(value)) {
-      foundTask.push(item);
+      foundTasks.push(item);
     }
+    setTaskList(foundTasks);
   });
-
-  setInfoAboutTask((pre) => ({ ...pre, tasksList: foundTask }));
 };

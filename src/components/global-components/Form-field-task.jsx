@@ -1,15 +1,11 @@
 import style from '../styles/App.module.css';
-import { ButtonForForm, VariantsActionsBySubmit, BreadRumbs } from '../reuse-components';
+import { ButtonForForm, VariantsActionsBySubmit, BreadCrumbs } from '../reuse-components';
 import { useState } from 'react';
-import { submitEvent, useExchangeButton } from '../../util';
+import { submitEvent } from '../../util';
 
-export const FormFieldTask = ({
-  infoAboutTask,
-  setInfoAboutTask,
-  refreshAllRequests,
-}) => {
+export const FormFieldTask = ({ refreshAllRequests, taskList, setTaskList }) => {
   const [value, setValue] = useState('');
-  useExchangeButton(infoAboutTask, setValue);
+  const [action, setAction] = useState('add');
 
   const onChangeTaskField = ({ target }) => {
     setValue(target.value);
@@ -17,51 +13,31 @@ export const FormFieldTask = ({
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    submitEvent(value, refreshAllRequests, infoAboutTask, setInfoAboutTask);
-    if (infoAboutTask.flagForButton !== 'search') {
-      setInfoAboutTask((pre) => ({
-        ...pre,
-        id: '',
-        title: '',
-        flagForButton: 'add',
-      }));
-    }
-
+    submitEvent(value, action, refreshAllRequests, taskList, setTaskList);
     setValue('');
   };
 
   return (
-    <form
-      action="src/components/global-components/Form-field-task#Form-field-task.jsx"
-      className={style.form}
-      onSubmit={onSubmitFormTask}
-    >
-      <BreadRumbs infoAboutTask={infoAboutTask} setInfoAboutTask={setInfoAboutTask} />
+    <form action="#" className={style.form} onSubmit={onSubmitFormTask}>
+      <BreadCrumbs />
       <p className={style.title}>Тут твои задачи</p>
       <div className={style.flexForm}>
         <div className={style.flexField}>
           <input
             className={style.field}
             type="text"
-            name="fieldNewTask"
             placeholder={'Напишите что вы хотите сделать'}
             value={value}
             onChange={onChangeTaskField}
-            ref={infoAboutTask.inputFieldRef}
           />
           <VariantsActionsBySubmit
-            infoAboutTask={infoAboutTask}
-            setInfoAboutTask={setInfoAboutTask}
             refreshAllRequests={refreshAllRequests}
+            action={action}
+            setAction={setAction}
           />
         </div>
         <div className={style.flexField}>
-          <ButtonForForm
-            flag={true}
-            refreshAllRequests={refreshAllRequests}
-            infoAboutTask={infoAboutTask}
-            setInfoAboutTask={setInfoAboutTask}
-          />
+          <ButtonForForm refreshAllRequests={refreshAllRequests} setAction={setAction} />
         </div>
       </div>
     </form>

@@ -2,15 +2,8 @@ import React, { useRef, useState } from 'react';
 import { CreateTaskList, FormFieldTask } from '../global-components';
 
 export const MainPage = () => {
+  const [taskList, setTaskList] = useState([]);
   const [refreshFlag, setRefreshFlag] = useState(false);
-  const [infoAboutTask, setInfoAboutTask] = useState({
-    id: '',
-    title: '',
-    flagForButton: 'add',
-    tasksList: [],
-    inputFieldRef: useRef(null),
-    noRefreshFlag: false,
-  });
 
   const refreshAllRequests = () => {
     setRefreshFlag(!refreshFlag);
@@ -19,15 +12,14 @@ export const MainPage = () => {
   return (
     <>
       <FormFieldTask
-        infoAboutTask={infoAboutTask}
-        setInfoAboutTask={setInfoAboutTask}
         refreshAllRequests={refreshAllRequests}
+        taskList={taskList}
+        setTaskList={setTaskList}
       />
       <CreateTaskList
         refreshFlag={refreshFlag}
-        refreshAllRequests={refreshAllRequests}
-        infoAboutTask={infoAboutTask}
-        setInfoAboutTask={setInfoAboutTask}
+        taskList={taskList}
+        setTaskList={setTaskList}
       />
     </>
   );

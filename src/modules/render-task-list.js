@@ -1,13 +1,10 @@
 import { TODOS_URL } from '../App';
 
-export async function createNewTask(setInfoAboutTask, setIsLoading) {
+export async function renderTaskList(setTaskList, setIsLoading) {
   try {
     const response = await fetch(TODOS_URL);
     const result = await response.json();
-    setInfoAboutTask((pre) => ({
-      ...pre,
-      tasksList: result,
-    }));
+    setTaskList(result);
     setIsLoading(false);
   } catch (error) {
     console.error(error);
