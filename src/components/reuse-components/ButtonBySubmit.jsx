@@ -1,6 +1,6 @@
-import style from './styles/App.module.css';
+import style from '../styles/App.module.css';
 
-export const ButtonForForm = ({
+export const ButtonBySubmit = ({
   infoAboutTask,
   setInfoAboutTask,
   refreshAllRequests,

@@ -1,8 +1,6 @@
-import { TODOS_URL } from '../../App';
+import { TODOS_URL } from '../App';
 
 export const editTask = async (itemId, infoAboutTask, setInfoAboutTask) => {
-  // const { inputFieldRef } = infoAboutTask;
-
   try {
     const responseTask = await fetch(`${TODOS_URL}/${itemId}`, {});
     const result = await responseTask.json();

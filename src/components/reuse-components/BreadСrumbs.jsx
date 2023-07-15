@@ -1,9 +1,9 @@
-import style from './styles/BreadСrumbs.module.css';
+import style from '../styles/BreadСrumbs.module.css';
 import { Link, NavLink, useMatch, useNavigate, useParams } from 'react-router-dom';
-import back from '../back.svg';
+import back from '../../img/back.svg';
 import { useEffect } from 'react';
 
-export const BreadСrumbs = ({ infoAboutTask, setInfoAboutTask }) => {
+export const BreadRumbs = ({ infoAboutTask, setInfoAboutTask }) => {
   const navigate = useNavigate();
 
   const urlMatches = useMatch('/:type/:id');
@@ -28,7 +28,6 @@ export const BreadСrumbs = ({ infoAboutTask, setInfoAboutTask }) => {
       ) : (
         ''
       )}
-      {/*<TaskBreadCrumbs infoAboutTask={infoAboutTask} />*/}
     </ul>
   );
 };

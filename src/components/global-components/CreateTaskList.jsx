@@ -1,15 +1,9 @@
-import style from './styles/App.module.css';
-import { ButtonCreate } from './ButtonCreate';
+import style from '../styles/App.module.css';
 import { useEffect, useState } from 'react';
-import { createNewTask } from './modules/create-new-task';
+import { createNewTask } from '../../modules/create-new-task';
 import { Link } from 'react-router-dom';
 
-export const TaskName = ({
-  refreshFlag,
-  refreshAllRequests,
-  infoAboutTask,
-  setInfoAboutTask,
-}) => {
+export const CreateTaskList = ({ refreshFlag, infoAboutTask, setInfoAboutTask }) => {
   const { tasksList } = infoAboutTask;
   const [isLoading, setIsLoading] = useState(false);
 

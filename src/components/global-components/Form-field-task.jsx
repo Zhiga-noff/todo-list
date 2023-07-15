@@ -1,16 +1,12 @@
-import style from './styles/App.module.css';
-import { ButtonCreate } from './ButtonCreate';
+import style from '../styles/App.module.css';
+import { ButtonForForm, ButtonBySubmit, BreadRumbs } from '../reuse-components';
 import { useState } from 'react';
-import { useExchangeButton } from './util/use-exchange-button';
-import { submitEvent } from './util/submit-event';
-import { ButtonForForm } from './ButtonForForm';
-import { Link } from 'react-router-dom';
-import { BreadСrumbs } from './BreadСrumbs';
+import { submitEvent, useExchangeButton } from '../../util';
 
 export const FormFieldTask = ({
-  refreshAllRequests,
   infoAboutTask,
   setInfoAboutTask,
+  refreshAllRequests,
 }) => {
   const [value, setValue] = useState('');
   useExchangeButton(infoAboutTask, setValue);
@@ -35,8 +31,12 @@ export const FormFieldTask = ({
   };
 
   return (
-    <form action="#" className={style.form} onSubmit={onSubmitFormTask}>
-      <BreadСrumbs infoAboutTask={infoAboutTask} setInfoAboutTask={setInfoAboutTask} />
+    <form
+      action="src/components/global-components/Form-field-task#Form-field-task.jsx"
+      className={style.form}
+      onSubmit={onSubmitFormTask}
+    >
+      <BreadRumbs infoAboutTask={infoAboutTask} setInfoAboutTask={setInfoAboutTask} />
       <p className={style.title}>Тут твои задачи</p>
       <div className={style.flexForm}>
         <div className={style.flexField}>
@@ -49,14 +49,14 @@ export const FormFieldTask = ({
             onChange={onChangeTaskField}
             ref={infoAboutTask.inputFieldRef}
           />
-          <ButtonForForm
+          <ButtonBySubmit
             infoAboutTask={infoAboutTask}
             setInfoAboutTask={setInfoAboutTask}
             refreshAllRequests={refreshAllRequests}
           />
         </div>
         <div className={style.flexField}>
-          <ButtonCreate
+          <ButtonForForm
             flag={true}
             refreshAllRequests={refreshAllRequests}
             infoAboutTask={infoAboutTask}

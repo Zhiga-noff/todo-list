@@ -1,7 +1,7 @@
-import filter from '../filter.svg';
-import search from '../search.svg';
-import edit from '../edit.svg';
-import del from '../del.svg';
+import filter from '../img/filter.svg';
+import search from '../img/search.svg';
+import edit from '../img/edit.svg';
+import del from '../img/del.svg';
 
 export const buttonsIcon = [
   {
