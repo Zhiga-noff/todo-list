@@ -1,4 +1,4 @@
-import style from '../styles/App.module.css';
+import style from '../../styles/App.module.css';
 import { ButtonForForm, VariantsActionsBySubmit, BreadCrumbs } from '../reuse-components';
 import { useState } from 'react';
 import { submitEvent } from '../../util';
@@ -37,7 +37,12 @@ export const FormFieldTask = ({ refreshAllRequests, taskList, setTaskList }) => 
           />
         </div>
         <div className={style.flexField}>
-          <ButtonForForm refreshAllRequests={refreshAllRequests} setAction={setAction} />
+          <ButtonForForm
+            refreshAllRequests={refreshAllRequests}
+            setAction={setAction}
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
         </div>
       </div>
     </form>

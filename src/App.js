@@ -1,4 +1,4 @@
-import style from './components/styles/App.module.css';
+import style from './styles/App.module.css';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import { MainPage, TaskPage, NotFoundPage } from './components/pages-components';
 

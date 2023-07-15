@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../styles/TaskActive.module.css';
+import style from '../../styles/TaskActive.module.css';
 import { ButtonForTask } from '../reuse-components';
 
 const CreateSelectedTask = ({ taskActive, setEditFlag }) => {

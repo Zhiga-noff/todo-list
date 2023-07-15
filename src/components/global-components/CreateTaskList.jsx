@@ -1,4 +1,4 @@
-import style from '../styles/App.module.css';
+import style from '../../styles/App.module.css';
 import { useEffect, useState } from 'react';
 import { renderTaskList } from '../../modules/render-task-list';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,8 @@ export const CreateTaskList = ({ refreshFlag, taskList, setTaskList }) => {
     setIsLoading(true);
     renderTaskList(setTaskList, setIsLoading);
   }, [refreshFlag]);
+
+  // console.log(taskList);
 
   return isLoading ? (
     <div className={style.loader}></div>

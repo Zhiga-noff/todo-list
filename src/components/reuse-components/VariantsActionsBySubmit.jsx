@@ -1,4 +1,4 @@
-import style from '../styles/App.module.css';
+import style from '../../styles/App.module.css';
 
 export const VariantsActionsBySubmit = ({ refreshAllRequests, action, setAction }) => {
   if (action === 'search') {

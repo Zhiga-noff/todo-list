@@ -1,13 +1,16 @@
 import { buttonsIcon } from '../../data/buttons-icon';
-import { eventOnClick } from '../../util/event-on-click';
-import { noRefreshTask } from '../../modules/no-refresh-task';
-import { Link } from 'react-router-dom';
+import { filterTask } from '../../modules/filter-task';
 
-export const ButtonForForm = ({ refreshAllRequests, setAction }) => {
+export const ButtonForForm = ({ setAction, taskList, setTaskList }) => {
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (name === 'filter') {
       return (
-        <a key={name} onClick={() => {}}>
+        <a
+          key={name}
+          onClick={() => {
+            filterTask(taskList, setTaskList);
+          }}
+        >
           <img src={url} alt="" />
         </a>
       );

@@ -1,6 +1,6 @@
 import notFondImage from '../../img/404.svg';
 import { Link } from 'react-router-dom';
-import style from '../styles/App.module.css';
+import style from '../../styles/App.module.css';
 
 export const NotFoundPage = () => {
   return (

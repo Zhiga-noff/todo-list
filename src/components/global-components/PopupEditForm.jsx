@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from '../styles/PopupEditForm.module.css';
+import style from '../../styles/PopupEditForm.module.css';
 import { requestEditTask } from '../../util';
 
 const PopupEditForm = ({ taskActive, setEditFlag }) => {
