@@ -1,5 +1,5 @@
 import style from '../styles/App.module.css';
-import { ButtonForForm, ButtonBySubmit, BreadRumbs } from '../reuse-components';
+import { ButtonForForm, VariantsActionsBySubmit, BreadRumbs } from '../reuse-components';
 import { useState } from 'react';
 import { submitEvent, useExchangeButton } from '../../util';
 
@@ -49,7 +49,7 @@ export const FormFieldTask = ({
             onChange={onChangeTaskField}
             ref={infoAboutTask.inputFieldRef}
           />
-          <ButtonBySubmit
+          <VariantsActionsBySubmit
             infoAboutTask={infoAboutTask}
             setInfoAboutTask={setInfoAboutTask}
             refreshAllRequests={refreshAllRequests}

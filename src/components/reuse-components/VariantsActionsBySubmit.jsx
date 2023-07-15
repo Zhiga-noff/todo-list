@@ -1,6 +1,6 @@
 import style from '../styles/App.module.css';
 
-export const ButtonBySubmit = ({
+export const VariantsActionsBySubmit = ({
   infoAboutTask,
   setInfoAboutTask,
   refreshAllRequests,
