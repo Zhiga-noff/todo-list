@@ -13,9 +13,6 @@ export const submitEvent = (
       case 'add':
         requestAddTask(value, refreshAllRequests);
         break;
-      case 'edit':
-        requestEditTask(value, refreshAllRequests, infoAboutTask);
-        break;
       case 'search':
         requestSearchTask(value, infoAboutTask, setInfoAboutTask);
         break;

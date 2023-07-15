@@ -13,6 +13,9 @@ export const TaskPage = () => {
 
   const { id } = useParams();
 
+  console.log(taskActive);
+  console.log(editFlag);
+
   useEffect(() => {
     renderRequestTask(id, setTaskActive, setIsLoading);
   }, [editFlag]);

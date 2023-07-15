@@ -16,10 +16,9 @@ const PopupEditForm = ({ taskActive, setEditFlag }) => {
         <form
           action="#"
           onSubmit={(event) => {
-            console.log(taskActive.id);
             event.preventDefault();
-            requestEditTask(valueEditTask, taskActive.id);
             setEditFlag(false);
+            requestEditTask(valueEditTask, taskActive.id);
           }}
         >
           <p className={style.taskName}>{taskActive.title}</p>
