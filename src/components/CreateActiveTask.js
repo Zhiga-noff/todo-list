@@ -12,7 +12,7 @@ export const CreateActiveTask = ({ infoAboutTask, setInfoAboutTask }) => {
 
   useEffect(() => {
     renderRequestTask(params.id, setTaskActive, setIsLoading);
-  }, [taskActive]);
+  }, [infoAboutTask]);
 
   return isLoading ? (
     <div className={style.loader}></div>
