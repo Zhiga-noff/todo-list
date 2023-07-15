@@ -1,4 +1,4 @@
-import { TODOS_URL } from '../../App';
+import { TODOS_URL } from '../App';
 
 export const requestAddTask = async (value, refreshAllRequests) => {
   try {
@@ -15,8 +15,7 @@ export const requestAddTask = async (value, refreshAllRequests) => {
   }
 };
 
-export const requestEditTask = async (value, refreshAllRequests, infoAboutTask) => {
-  const { id: taskId } = infoAboutTask;
+export const requestEditTask = async (value, taskId) => {
   try {
     const response = await fetch(`${TODOS_URL}/${taskId}`, {
       method: 'PUT',
@@ -25,7 +24,6 @@ export const requestEditTask = async (value, refreshAllRequests, infoAboutTask) 
         title: value,
       }),
     });
-    refreshAllRequests();
   } catch (error) {
     console.log(error);
   }

@@ -54,3 +54,39 @@
         transform: rotate(360deg);
     }
 }
+
+.form {
+    padding: 3rem 3rem;
+    background: linear-gradient(109.8deg, #8e38a6 7.02%, #6746ee 94.32%);
+}
+
+.title {
+    font-size: 5rem;
+    color: white;
+    max-width: 600px;
+    white-space: nowrap; /* Текст не переносится */
+    overflow: hidden; /* Обрезаем всё за пределами блока */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.flexField {
+    display: flex;
+    justify-content: stretch;
+}
+
+.flexForm {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flexForm a {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.field {
+    padding: 1rem 2rem;
+    width: 30rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+}

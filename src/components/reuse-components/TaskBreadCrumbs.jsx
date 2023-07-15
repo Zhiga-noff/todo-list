@@ -1,4 +1,4 @@
-import style from './styles/BreadСrumbs.module.css';
+import style from '../styles/BreadСrumbs.module.css';
 import { NavLink } from 'react-router-dom';
 
 export const TaskBreadCrumbs = ({ infoAboutTask }) => {

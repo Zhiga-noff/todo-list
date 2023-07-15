@@ -1,4 +1,4 @@
-import { TODOS_URL } from '../../App';
+import { TODOS_URL } from '../App';
 
 export async function createNewTask(setInfoAboutTask, setIsLoading) {
   try {

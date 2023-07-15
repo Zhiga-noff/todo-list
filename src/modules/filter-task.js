@@ -1,4 +1,4 @@
-import { TODOS_URL } from '../../App';
+import { TODOS_URL } from '../App';
 
 export const filterTask = async (infoAboutTask, setInfoAboutTask) => {
   try {
