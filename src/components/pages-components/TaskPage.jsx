@@ -5,25 +5,30 @@ import { useContext, useEffect, useState } from 'react';
 import { BreadCrumbs } from '../reuse-components/';
 import CreateSelectedTask from '../global-components/CreateSelectedTask';
 import PopupEditForm from '../global-components/PopupEditForm';
-import { ContextTaskList } from '../../context/context';
+import { ContextTaskList } from '../../context/ContextTaskList';
+import { ContextIsLoading } from '../../context';
 
 export const TaskPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [editFlag, setEditFlag] = useState(false);
-
+  const { isLoading, dispatchIsLoading } = useContext(ContextIsLoading);
   const { taskList, dispatchTaskList } = useContext(ContextTaskList);
+  const [editFlag, setEditFlag] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
-    renderRequestTask(id, dispatchTaskList, setIsLoading);
+    dispatchIsLoading({ type: 'SET_IS_LOADING', payload: true });
+    renderRequestTask(id, dispatchTaskList, dispatchIsLoading);
   }, []);
 
   return (
     <>
       <div className={style.form}>
         <BreadCrumbs />
-        <p className={style.title}> {taskList[0]?.title}</p>
+        {isLoading ? (
+          <p className={style.title}>Ожидаем ответа</p>
+        ) : (
+          <p className={style.title}>{taskList[0]?.title}</p>
+        )}
       </div>
       {isLoading ? (
         <div className={style.loader}></div>

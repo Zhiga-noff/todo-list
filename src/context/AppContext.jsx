@@ -1,4 +1,4 @@
-import { ContextIsLoading, ContextTaskList } from './context';
+import { ContextTaskList, ContextIsLoading } from './';
 import { useReducer } from 'react';
 import { reducer } from '../util/reducer';
 

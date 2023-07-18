@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import style from '../../styles/TaskActive.module.css';
 import { ButtonForTask } from '../reuse-components';
-import { ContextTaskList } from '../../context/context';
+import { ContextTaskList } from '../../context/ContextTaskList';
 
 const CreateSelectedTask = ({ setEditFlag }) => {
   const { taskList } = useContext(ContextTaskList);

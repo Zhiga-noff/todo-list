@@ -1,7 +1,7 @@
 import { buttonsIcon } from '../../data/buttons-icon';
 import { filterTask } from '../../modules/filter-task';
 import { useContext } from 'react';
-import { ContextTaskList } from '../../context/context';
+import { ContextTaskList } from '../../context/ContextTaskList';
 
 export const ButtonForForm = ({ setAction }) => {
   const { taskList, dispatchTaskList } = useContext(ContextTaskList);
