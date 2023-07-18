@@ -14,8 +14,6 @@ export const CreateTaskList = ({ refreshFlag }) => {
     renderTaskList(dispatchTaskList, dispatchIsLoading);
   }, [refreshFlag]);
 
-  console.log(taskList);
-
   return isLoading ? (
     <div className={style.loader}></div>
   ) : (

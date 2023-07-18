@@ -18,7 +18,7 @@ export const TaskPage = () => {
   useEffect(() => {
     dispatchIsLoading({ type: 'SET_IS_LOADING', payload: true });
     renderRequestTask(id, dispatchTaskList, dispatchIsLoading);
-  }, []);
+  }, [editFlag]);
 
   return (
     <>
