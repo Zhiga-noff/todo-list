@@ -1,17 +1,19 @@
 import style from '../../styles/App.module.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { renderTaskList } from '../../modules/render-task-list';
 import { Link } from 'react-router-dom';
+import { ContextTaskList } from '../../context/context';
 
-export const CreateTaskList = ({ refreshFlag, taskList, setTaskList }) => {
-  const [isLoading, setIsLoading] = useState(false);
+export const CreateTaskList = ({ refreshFlag }) => {
+  const { taskList, dispatchTaskList } = useContext(ContextTaskList);
+  const { isLoading, dispatchIsLoading } = useContext(ContextTaskList);
 
   useEffect(() => {
-    setIsLoading(true);
-    renderTaskList(setTaskList, setIsLoading);
+    dispatchIsLoading({ type: 'SET_IS_LOADING', payload: true });
+    renderTaskList(dispatchTaskList, dispatchIsLoading);
   }, [refreshFlag]);
 
-  // console.log(taskList);
+  console.log(taskList);
 
   return isLoading ? (
     <div className={style.loader}></div>

@@ -1,11 +1,14 @@
 import style from '../../styles/App.module.css';
 import { ButtonForForm, VariantsActionsBySubmit, BreadCrumbs } from '../reuse-components';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { submitEvent } from '../../util';
+import { ContextTaskList } from '../../context/context';
 
-export const FormFieldTask = ({ refreshAllRequests, taskList, setTaskList }) => {
+export const FormFieldTask = ({ refreshAllRequests }) => {
   const [value, setValue] = useState('');
   const [action, setAction] = useState('add');
+
+  const { taskList, dispatchTaskList } = useContext(ContextTaskList);
 
   const onChangeTaskField = ({ target }) => {
     setValue(target.value);
@@ -13,7 +16,7 @@ export const FormFieldTask = ({ refreshAllRequests, taskList, setTaskList }) => 
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    submitEvent(value, action, refreshAllRequests, taskList, setTaskList);
+    submitEvent(value, action, refreshAllRequests, taskList, dispatchTaskList);
     setValue('');
   };
 
@@ -37,12 +40,7 @@ export const FormFieldTask = ({ refreshAllRequests, taskList, setTaskList }) => 
           />
         </div>
         <div className={style.flexField}>
-          <ButtonForForm
-            refreshAllRequests={refreshAllRequests}
-            setAction={setAction}
-            taskList={taskList}
-            setTaskList={setTaskList}
-          />
+          <ButtonForForm refreshAllRequests={refreshAllRequests} setAction={setAction} />
         </div>
       </div>
     </form>

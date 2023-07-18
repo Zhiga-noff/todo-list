@@ -1,14 +1,18 @@
 import { buttonsIcon } from '../../data/buttons-icon';
 import { filterTask } from '../../modules/filter-task';
+import { useContext } from 'react';
+import { ContextTaskList } from '../../context/context';
 
-export const ButtonForForm = ({ setAction, taskList, setTaskList }) => {
+export const ButtonForForm = ({ setAction }) => {
+  const { taskList, dispatchTaskList } = useContext(ContextTaskList);
+
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (name === 'filter') {
       return (
         <a
           key={name}
           onClick={() => {
-            filterTask(taskList, setTaskList);
+            filterTask(taskList, dispatchTaskList);
           }}
         >
           <img src={url} alt="" />

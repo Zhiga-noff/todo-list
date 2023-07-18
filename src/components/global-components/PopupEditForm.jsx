@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import style from '../../styles/PopupEditForm.module.css';
 import { requestEditTask } from '../../util';
+import { ContextTaskList } from '../../context/context';
 
-const PopupEditForm = ({ taskActive, setEditFlag }) => {
-  const [valueEditTask, setValueEditTask] = useState(taskActive.title);
+const PopupEditForm = ({ setEditFlag }) => {
+  const { taskList } = useContext(ContextTaskList);
+  const [valueEditTask, setValueEditTask] = useState(taskList[0].title);
 
   const onChangeEditField = ({ target }) => {
     setValueEditTask(target.value);
@@ -18,10 +20,10 @@ const PopupEditForm = ({ taskActive, setEditFlag }) => {
           onSubmit={(event) => {
             event.preventDefault();
             setEditFlag(false);
-            requestEditTask(valueEditTask, taskActive.id);
+            requestEditTask(valueEditTask, taskList[0].id);
           }}
         >
-          <p className={style.taskName}>{taskActive.title}</p>
+          <p className={style.taskName}>{taskList[0].title}</p>
           <div>
             <input
               className={style.field}
