@@ -6,7 +6,7 @@ import { ContextTaskList } from '../../context/context';
 
 export const CreateTaskList = ({ refreshFlag }) => {
   const { taskList, dispatchTaskList } = useContext(ContextTaskList);
-  const { isLoading, dispatchIsLoading } = useContext(ContextTaskList);
+  const { isLoading, dispatchIsLoading } = useContext(ContextIsLoading);
 
   useEffect(() => {
     dispatchIsLoading({ type: 'SET_IS_LOADING', payload: true });

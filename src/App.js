@@ -8,13 +8,13 @@ export const TODOS_URL = 'http://localhost:3005/todos\n';
 export const App = () => {
   return (
     <div className={style.app}>
-      <AppContext.Provider>
+      <AppContext>
         <Routes>
           <Route path={'/'} element={<MainPage />} />
           <Route path={`/task/:id`} element={<TaskPage />}></Route>
           <Route path={'*'} element={<NotFoundPage />} />
         </Routes>
-      </AppContext.Provider>
+      </AppContext>
     </div>
   );
 };
