@@ -29,12 +29,12 @@ export const requestEditTask = async (value, taskId) => {
   }
 };
 
-export const requestSearchTask = (value, taskList, dispatchTaskList) => {
+export const requestSearchTask = (value, taskList, setTaskList) => {
   const foundTasks = [];
   taskList.forEach((item) => {
     if (item.title.includes(value)) {
       foundTasks.push(item);
     }
-    dispatchTaskList({ type: 'SET_UPDATE_TASK_LIST', payload: foundTasks });
+    setTaskList(foundTasks);
   });
 };

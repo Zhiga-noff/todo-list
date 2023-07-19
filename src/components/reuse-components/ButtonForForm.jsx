@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { ContextTaskList } from '../../context/ContextTaskList';
 
 export const ButtonForForm = ({ setAction }) => {
-  const { taskList, dispatchTaskList } = useContext(ContextTaskList);
+  const { taskList, setTaskList } = useContext(ContextTaskList);
 
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (name === 'filter') {
@@ -12,7 +12,7 @@ export const ButtonForForm = ({ setAction }) => {
         <a
           key={name}
           onClick={() => {
-            filterTask(taskList, dispatchTaskList);
+            filterTask(taskList, setTaskList);
           }}
         >
           <img src={url} alt="" />

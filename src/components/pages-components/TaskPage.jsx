@@ -9,15 +9,15 @@ import { ContextTaskList } from '../../context/ContextTaskList';
 import { ContextIsLoading } from '../../context';
 
 export const TaskPage = () => {
-  const { isLoading, dispatchIsLoading } = useContext(ContextIsLoading);
-  const { taskList, dispatchTaskList } = useContext(ContextTaskList);
+  const { isLoading, setIsLoading } = useContext(ContextIsLoading);
+  const { taskList, setTaskList } = useContext(ContextTaskList);
   const [editFlag, setEditFlag] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
-    dispatchIsLoading({ type: 'SET_IS_LOADING', payload: true });
-    renderRequestTask(id, dispatchTaskList, dispatchIsLoading);
+    setIsLoading(true);
+    renderRequestTask(id, setTaskList, setIsLoading);
   }, [editFlag]);
 
   return (

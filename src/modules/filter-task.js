@@ -1,4 +1,4 @@
-export const filterTask = (taskList, dispatchTaskList) => {
+export const filterTask = (taskList, setTaskList) => {
   const sortResult = taskList.sort(({ title: titleOne }, { title: titleTwo }) => {
     if (titleOne > titleTwo) {
       return 1;
@@ -10,5 +10,5 @@ export const filterTask = (taskList, dispatchTaskList) => {
       return -1;
     }
   });
-  dispatchTaskList({ type: 'SET_UPDATE_TASK_LIST', payload: [...sortResult] });
+  setTaskList([...sortResult]);
 };

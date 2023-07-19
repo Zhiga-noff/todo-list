@@ -1,14 +1,14 @@
 import { ContextTaskList, ContextIsLoading } from './';
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import { reducer } from '../util/reducer';
 
 export const AppContext = ({ children }) => {
-  const [taskList, dispatchTaskList] = useReducer(reducer, []);
-  const [isLoading, dispatchIsLoading] = useReducer(reducer, false);
+  const [taskList, setTaskList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <ContextTaskList.Provider value={{ taskList, dispatchTaskList }}>
-      <ContextIsLoading.Provider value={{ isLoading, dispatchIsLoading }}>
+    <ContextTaskList.Provider value={{ taskList, setTaskList }}>
+      <ContextIsLoading.Provider value={{ isLoading, setIsLoading }}>
         {children}
       </ContextIsLoading.Provider>
     </ContextTaskList.Provider>

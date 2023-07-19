@@ -6,16 +6,16 @@ import { ContextTaskList } from '../../context/ContextTaskList';
 import { ContextIsLoading } from '../../context/ContextIsLoading';
 
 export const CreateTaskList = ({ refreshFlag }) => {
-  const { taskList, dispatchTaskList } = useContext(ContextTaskList);
-  const { isLoading, dispatchIsLoading } = useContext(ContextIsLoading);
+  const { taskList, setTaskList } = useContext(ContextTaskList);
+  const { isLoading, setIsLoading } = useContext(ContextIsLoading);
 
   useEffect(() => {
-    dispatchIsLoading({ type: 'SET_IS_LOADING', payload: true });
-    renderTaskList(dispatchTaskList, dispatchIsLoading);
+    setIsLoading(true);
+    renderTaskList(setTaskList, setIsLoading);
   }, [refreshFlag]);
 
   return isLoading ? (
-    <div className={style.loader}></div>
+    <div className={style.loader} />
   ) : (
     taskList.map(({ id, title }) => (
       <li className={style.task} key={id}>

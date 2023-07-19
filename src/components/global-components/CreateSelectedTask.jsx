@@ -8,9 +8,9 @@ const CreateSelectedTask = ({ setEditFlag }) => {
 
   return (
     <div className={style.task}>
-      <p>{taskList[0].title}</p>
+      <p>{taskList[0]?.title}</p>
       <div className={style.icons}>
-        <ButtonForTask itemId={taskList[0].id} setEditFlag={setEditFlag} />
+        <ButtonForTask itemId={taskList[0]?.id} setEditFlag={setEditFlag} />
       </div>
     </div>
   );

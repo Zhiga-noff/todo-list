@@ -8,7 +8,7 @@ export const FormFieldTask = ({ refreshAllRequests }) => {
   const [value, setValue] = useState('');
   const [action, setAction] = useState('add');
 
-  const { taskList, dispatchTaskList } = useContext(ContextTaskList);
+  const { taskList, setTaskList } = useContext(ContextTaskList);
 
   const onChangeTaskField = ({ target }) => {
     setValue(target.value);
@@ -16,7 +16,7 @@ export const FormFieldTask = ({ refreshAllRequests }) => {
 
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    submitEvent(value, action, refreshAllRequests, taskList, dispatchTaskList);
+    submitEvent(value, action, refreshAllRequests, taskList, setTaskList);
     setValue('');
   };
 
