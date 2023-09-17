@@ -17,13 +17,9 @@ export const FormFieldTask = () => {
 
   const dispatch = useDispatch();
 
-  const refreshAllRequests = () => {
-    dispatch('REFRESH');
-  };
-
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    // submitEvent(value, action, refreshAllRequests, taskList, setTaskList);
+    submitEvent(value, action, dispatch, taskList);
     setValue('');
   };
 

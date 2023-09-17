@@ -1,6 +1,6 @@
 import { TODOS_URL } from '../App';
 
-export const requestAddTask = async (value, refreshAllRequests) => {
+export const requestAddTask = async (value, dispatch) => {
   try {
     const response = await fetch(TODOS_URL, {
       method: 'POST',
@@ -9,7 +9,7 @@ export const requestAddTask = async (value, refreshAllRequests) => {
         title: value,
       }),
     });
-    refreshAllRequests();
+    dispatch({ type: 'REFRESH' });
   } catch (error) {
     console.error(error);
   }
@@ -29,12 +29,12 @@ export const requestEditTask = async (value, taskId) => {
   }
 };
 
-export const requestSearchTask = (value, taskList, setTaskList) => {
+export const requestSearchTask = (value, taskList, dispatch) => {
   const foundTasks = [];
   taskList.forEach((item) => {
     if (item.title.includes(value)) {
       foundTasks.push(item);
     }
-    setTaskList(foundTasks);
+    dispatch({ type: 'RENDER_LIST', payload: foundTasks });
   });
 };
