@@ -35,7 +35,7 @@ export const TaskPage = () => {
         )}
       </div>
       {isLoading ? (
-        <div className={style.loader} />
+        <div className={style.loader}></div>
       ) : (
         <CreateSelectedTask setEditFlag={setEditFlag} />
       )}

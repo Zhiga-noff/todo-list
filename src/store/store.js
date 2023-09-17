@@ -4,11 +4,17 @@ import {
   combineReducers,
   legacy_createStore as createStore,
 } from 'redux';
-import { isLoadingReducer, refreshReducer, taskListReducer } from './reducers';
+import {
+  isLoadingReducer,
+  refreshReducer,
+  requestTaskReducer,
+  taskListReducer,
+} from './reducers';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
   taskListState: taskListReducer,
+  requestTaskState: requestTaskReducer,
   refreshState: refreshReducer,
   isLoadingState: isLoadingReducer,
 });

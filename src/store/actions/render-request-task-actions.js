@@ -9,8 +9,8 @@ export const renderRequestTaskActions = (taskId) => (dispatch) => {
   fetchRequestTask(taskId)
     .then((result) =>
       dispatch({
-        type: 'RENDER_REQUEST_TASK',
-        payload: result,
+        type: 'RENDER_LIST',
+        payload: [result],
       }),
     )
     .catch((e) => {
