@@ -13,7 +13,7 @@ export const VariantsActionsBySubmit = ({ action, setAction }) => {
           className={style.buttonRed}
           onClick={() => {
             setAction('add');
-            dispatch('REFRESH');
+            dispatch({ type: 'REFRESH' });
           }}
         >
           Сбросить

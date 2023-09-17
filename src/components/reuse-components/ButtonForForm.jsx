@@ -9,13 +9,7 @@ export const ButtonForForm = ({ setAction }) => {
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (name === 'filter') {
       return (
-        <a
-          key={name}
-          onClick={() => dispatch({ type: 'SORT' })}
-          // onClick={() => {
-          //   filterTask(taskList, dispatch);
-          // }}
-        >
+        <a key={name} onClick={() => dispatch({ type: 'SORT' })}>
           <img src={url} alt="" />
         </a>
       );
