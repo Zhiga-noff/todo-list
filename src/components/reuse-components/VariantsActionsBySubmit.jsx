@@ -1,6 +1,9 @@
 import style from '../../styles/App.module.css';
+import { useDispatch } from 'react-redux';
 
-export const VariantsActionsBySubmit = ({ refreshAllRequests, action, setAction }) => {
+export const VariantsActionsBySubmit = ({ action, setAction }) => {
+  const dispatch = useDispatch();
+
   if (action === 'search') {
     return (
       <>
@@ -10,7 +13,7 @@ export const VariantsActionsBySubmit = ({ refreshAllRequests, action, setAction 
           className={style.buttonRed}
           onClick={() => {
             setAction('add');
-            refreshAllRequests();
+            dispatch('REFRESH');
           }}
         >
           Сбросить

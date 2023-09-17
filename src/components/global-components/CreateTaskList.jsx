@@ -1,17 +1,20 @@
 import style from '../../styles/App.module.css';
-import { useContext, useEffect, useState } from 'react';
-import { renderTaskList } from '../../modules/render-task-list';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ContextTaskList } from '../../context/ContextTaskList';
-import { ContextIsLoading } from '../../context/ContextIsLoading';
+import { useDispatch, useSelector } from 'react-redux';
+import { isLoadingSelect, refreshSelect, taskListSelect } from '../../store/selectors';
+import { renderTaskListActions } from '../../store/actions';
 
-export const CreateTaskList = ({ refreshFlag }) => {
-  const { taskList, setTaskList } = useContext(ContextTaskList);
-  const { isLoading, setIsLoading } = useContext(ContextIsLoading);
+export const CreateTaskList = () => {
+  const taskList = useSelector(taskListSelect);
+  const isLoading = useSelector(isLoadingSelect);
+  const refreshFlag = useSelector(refreshSelect);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
-    renderTaskList(setTaskList, setIsLoading);
+    dispatch({ type: 'ON_LOADING' });
+    dispatch(renderTaskListActions);
   }, [refreshFlag]);
 
   return isLoading ? (

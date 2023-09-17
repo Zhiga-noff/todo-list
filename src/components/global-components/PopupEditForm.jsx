@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import style from '../../styles/PopupEditForm.module.css';
 import { requestEditTask } from '../../util';
-import { ContextTaskList } from '../../context/ContextTaskList';
+import { useSelector } from 'react-redux';
+import { taskListSelect } from '../../store/selectors';
 
 const PopupEditForm = ({ setEditFlag }) => {
-  const { taskList } = useContext(ContextTaskList);
+  const taskList = useSelector(taskListSelect);
   const [valueEditTask, setValueEditTask] = useState(taskList[0].title);
 
   const onChangeEditField = ({ target }) => {

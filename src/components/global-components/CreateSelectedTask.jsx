@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import style from '../../styles/TaskActive.module.css';
 import { ButtonForTask } from '../reuse-components';
-import { ContextTaskList } from '../../context/ContextTaskList';
+import { useSelector } from 'react-redux';
+import { taskListSelect } from '../../store/selectors';
 
 const CreateSelectedTask = ({ setEditFlag }) => {
-  const { taskList } = useContext(ContextTaskList);
+  const taskList = useSelector(taskListSelect);
 
   return (
     <div className={style.task}>

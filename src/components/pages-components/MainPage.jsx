@@ -1,17 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { CreateTaskList, FormFieldTask } from '../global-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshSelect } from '../../store/selectors/refresh-select';
 
 export const MainPage = () => {
-  const [refreshFlag, setRefreshFlag] = useState(false);
-
-  const refreshAllRequests = () => {
-    setRefreshFlag(!refreshFlag);
-  };
-
   return (
     <>
-      <FormFieldTask refreshAllRequests={refreshAllRequests} />
-      <CreateTaskList refreshFlag={refreshFlag} />
+      <FormFieldTask />
+      <CreateTaskList />
     </>
   );
 };

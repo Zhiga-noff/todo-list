@@ -1,23 +1,27 @@
 import style from '../../styles/TaskActive.module.css';
-import { renderRequestTask } from '../../modules/render-request-task';
 import { useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BreadCrumbs } from '../reuse-components/';
 import CreateSelectedTask from '../global-components/CreateSelectedTask';
 import PopupEditForm from '../global-components/PopupEditForm';
-import { ContextTaskList } from '../../context/ContextTaskList';
-import { ContextIsLoading } from '../../context';
+import { useDispatch, useSelector } from 'react-redux';
+import { isLoadingSelect, taskListSelect } from '../../store/selectors';
+import { renderRequestTaskActions } from '../../store/actions';
 
 export const TaskPage = () => {
-  const { isLoading, setIsLoading } = useContext(ContextIsLoading);
-  const { taskList, setTaskList } = useContext(ContextTaskList);
+  const isLoading = useSelector(isLoadingSelect);
+  const taskList = useSelector(taskListSelect);
+
+  const dispatch = useDispatch();
+
   const [editFlag, setEditFlag] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
-    setIsLoading(true);
-    renderRequestTask(id, setTaskList, setIsLoading);
+    dispatch({ type: 'ON_LOADING' });
+    dispatch(renderRequestTaskActions(id));
+    // renderRequestTask(id, setTaskList, setIsLoading);
   }, [editFlag]);
 
   return (
@@ -31,7 +35,7 @@ export const TaskPage = () => {
         )}
       </div>
       {isLoading ? (
-        <div className={style.loader}></div>
+        <div className={style.loader} />
       ) : (
         <CreateSelectedTask setEditFlag={setEditFlag} />
       )}

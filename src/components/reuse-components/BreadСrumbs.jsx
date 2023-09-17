@@ -1,7 +1,6 @@
 import style from '../../styles/BreadСrumbs.module.css';
 import { Link, NavLink, useMatch, useNavigate, useParams } from 'react-router-dom';
 import back from '../../img/back.svg';
-import { useEffect } from 'react';
 
 export const BreadCrumbs = () => {
   const navigate = useNavigate();

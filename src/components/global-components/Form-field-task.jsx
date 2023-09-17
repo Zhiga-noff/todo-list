@@ -1,22 +1,29 @@
 import style from '../../styles/App.module.css';
 import { ButtonForForm, VariantsActionsBySubmit, BreadCrumbs } from '../reuse-components';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { submitEvent } from '../../util';
-import { ContextTaskList } from '../../context/ContextTaskList';
+import { useDispatch, useSelector } from 'react-redux';
+import { taskListSelect, refreshSelect } from '../../store/selectors/';
 
-export const FormFieldTask = ({ refreshAllRequests }) => {
+export const FormFieldTask = () => {
   const [value, setValue] = useState('');
   const [action, setAction] = useState('add');
 
-  const { taskList, setTaskList } = useContext(ContextTaskList);
+  const taskList = useSelector(taskListSelect);
 
   const onChangeTaskField = ({ target }) => {
     setValue(target.value);
   };
 
+  const dispatch = useDispatch();
+
+  const refreshAllRequests = () => {
+    dispatch('REFRESH');
+  };
+
   const onSubmitFormTask = (event) => {
     event.preventDefault();
-    submitEvent(value, action, refreshAllRequests, taskList, setTaskList);
+    // submitEvent(value, action, refreshAllRequests, taskList, setTaskList);
     setValue('');
   };
 
@@ -33,14 +40,10 @@ export const FormFieldTask = ({ refreshAllRequests }) => {
             value={value}
             onChange={onChangeTaskField}
           />
-          <VariantsActionsBySubmit
-            refreshAllRequests={refreshAllRequests}
-            action={action}
-            setAction={setAction}
-          />
+          <VariantsActionsBySubmit action={action} setAction={setAction} />
         </div>
         <div className={style.flexField}>
-          <ButtonForForm refreshAllRequests={refreshAllRequests} setAction={setAction} />
+          <ButtonForForm setAction={setAction} />
         </div>
       </div>
     </form>

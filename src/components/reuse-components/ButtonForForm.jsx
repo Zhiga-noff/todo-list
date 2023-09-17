@@ -1,19 +1,20 @@
 import { buttonsIcon } from '../../data/buttons-icon';
-import { filterTask } from '../../modules/filter-task';
-import { useContext } from 'react';
-import { ContextTaskList } from '../../context/ContextTaskList';
+import { useDispatch, useSelector } from 'react-redux';
+import { taskListSelect } from '../../store/selectors';
 
 export const ButtonForForm = ({ setAction }) => {
-  const { taskList, setTaskList } = useContext(ContextTaskList);
+  const taskList = useSelector(taskListSelect);
+  const dispatch = useDispatch();
 
   return buttonsIcon.map(({ name, url, eventClick }) => {
     if (name === 'filter') {
       return (
         <a
           key={name}
-          onClick={() => {
-            filterTask(taskList, setTaskList);
-          }}
+          onClick={() => dispatch({ type: 'SORT' })}
+          // onClick={() => {
+          //   filterTask(taskList, dispatch);
+          // }}
         >
           <img src={url} alt="" />
         </a>

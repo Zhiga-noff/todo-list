@@ -1,4 +1,6 @@
-export const filterTask = (taskList, setTaskList) => {
+import { useDispatch } from 'react-redux';
+
+export const filterTask = (taskList, dispatch) => {
   const sortResult = taskList.sort(({ title: titleOne }, { title: titleTwo }) => {
     if (titleOne > titleTwo) {
       return 1;
@@ -10,5 +12,6 @@ export const filterTask = (taskList, setTaskList) => {
       return -1;
     }
   });
-  setTaskList([...sortResult]);
+
+  dispatch({ type: 'SORT', payload: sortResult });
 };
