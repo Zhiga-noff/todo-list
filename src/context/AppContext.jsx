@@ -1,6 +1,5 @@
 import { ContextTaskList, ContextIsLoading } from './';
-import { useReducer, useState } from 'react';
-import { reducer } from '../util/reducer';
+import {  useState } from 'react';
 
 export const AppContext = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
